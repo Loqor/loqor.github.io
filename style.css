@@ -48,6 +48,13 @@ div.discord {
     right: auto;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+    width: 100%;
+  }
+
 article {
     -webkit-flex: 3;
     -ms-flex: 3;
@@ -67,8 +74,11 @@ nav {
 
 nav ul {
 list-style-type: none;
-padding: 0;
+padding: 10;
 font-size: 150%;
+position: -webkit-sticky;
+position: sticky;
+top: 0;
 }
 
 footer {
