@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(193, 249, 215);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p {
+color: rgb(0, 138, 113);
+}
+
+header {
+    background-color: rgb(150, 249, 215);
+    text-align: center;
+    padding: 30px;
+    color: rgb(5, 100, 75);
+}
+
+section {
+    display: -webkit-flex;
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    section {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+}
+
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+}
+
+div.discord.wrapper {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background: rgb(168, 232, 209);
+    padding: 20px;
+    right:auto;
+} 
+div.discord {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: sticky;
+    right: auto;
+}
+
+article {
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    background-color: rgb(217, 248, 237);
+    padding: 10px;
+}
+
+nav {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background: rgb(168, 232, 209);
+    padding: 20px;
+} 
+  
+
+nav ul {
+list-style-type: none;
+padding: 0;
+font-size: 150%;
+}
+
+footer {
+    background-color: rgb(150, 249, 215);
+padding: 10px;
+text-align: center;
+color: rgb(5, 100, 75);
+position: -webkit-sticky;
+position: sticky;
+bottom: 0;
+}
+
+  
+  
