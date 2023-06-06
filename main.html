@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Heading Toolbar</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header class="heading-toolbar">
+    <nav>
+      <ul>
+        <li><a class="header-link header-link1" href="https://modrinth.com/mod/k9-mod/gallery">Home</a></li>
+        <li><a class="header-link header-link2" href="https://modrinth.com/mod/k9-mod/gallery">About</a></li>
+        <li><a class="header-link header-link3" href="https://modrinth.com/mod/k9-mod/gallery">Suggestions</a></li>
+        <li><button id="button" class="header-link header-link4">Mods</button></li>
+        <div class="dropdown-menu" id="expandedElement">
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li>
+          <li><a href="#">Item 3</a></li>
+          <li><a href="#">Item 4</a></li>
+        </div>
+        <li><a class="header-link header-link5" href="https://modrinth.com/mod/k9-mod/gallery">DMU</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    window.onload = function() {
+      var expandedElement = document.getElementById('expandedElement');
+      expandedElement.style.display = 'none';
+
+      document.getElementById('button').addEventListener('click', function() {
+        // Toggle the display of the expanded element
+        if (expandedElement.style.display === 'none') {
+          expandedElement.style.display = 'block';
+          expandedElement.style.opacity = 1;
+        } else {
+          expandedElement.style.display = 'none';
+          expandedElement.style.opacity = 0;
+        }
+      });
+    };
+  </script>
+</body>
+</html>

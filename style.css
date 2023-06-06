@@ -1,95 +1,86 @@
-body {
-    background-color: rgb(193, 249, 215);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-p {
-color: rgb(108, 92, 214);
-}
-
-header {
-    background-color: rgb(108, 92, 214);
-    text-align: center;
-    padding: 30px;
-    color: rgb(217, 212, 250);
-}
-
-section {
-    display: -webkit-flex;
-    display: flex;
-}
-
-@media (max-width: 600px) {
-    section {
-      -webkit-flex-direction: column;
-      flex-direction: column;
+html, body {
+    height: 100%; /* Set the body and html elements to occupy full height */
     }
+    body {
+        background-color: rgb(238, 238, 238);
+        background-size: cover;
+        margin: 0;
+    }
+
+.heading-toolbar {
+background-color: rgb(255, 255, 255);
+display: inline-block;
+width:100%;
+min-width: 100%;
 }
 
-div.sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
+ul {
+list-style: none;
+padding: 0;
+padding-left: 1px;
+padding-right: 1px;
+margin: 20px;
+width: fit-content;
+display: flex; /* Use flexbox to create a horizontal    layout */
+justify-content: flex-end; /* Offsets to the right header items horizontally */
+margin-left: auto;
+background-color: gray;
 }
 
-div.discord.wrapper {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    background: rgb(168, 232, 209);
-    padding: 20px;
-    right:auto;
-} 
-div.discord {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    position: sticky;
-    right: auto;
+.header-link {
+text-decoration: none;
+position: relative;
+background-color: white;
+font-family: 'Calibri', monospace;
+font-size: 25px;
+color: rgb(0, 0, 0);
+margin: 0.5px;
+padding-left: 9px;
+padding-right: 9px;
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right:auto;
-    width: 100%;
+.header-link::after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 2px;
+padding-right: 1px;
+background-color: purple;
+transform: scaleY(0);
+transition: transform 0.4s ease-in-out;
+}
+
+.header-link:hover::after {
+transform: scaleY(1);
+}
+
+#button {
+    border: none;
+    padding: 0;
+    font-family: 'Calibri', monospace;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    cursor:pointer;
+    text-decoration: none;
+    margin: 0;
+    padding-left: 9px;
+    padding-right: 9px;
   }
 
-article {
-    -webkit-flex: 3;
-    -ms-flex: 3;
-    flex: 3;
-    background-color: rgb(217, 248, 237);
-    padding: 10px;
-}
-
-nav {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    background: rgb(168, 232, 209);
-    padding: 20px;
-} 
-  
-
-nav ul {
-list-style-type: none;
-padding: 10;
-font-size: 150%;
-position: -webkit-sticky;
-position: sticky;
-top: 0;
-}
-
-footer {
-    background-color: rgb(150, 249, 215);
-padding: 10px;
-text-align: center;
-color: rgb(5, 100, 75);
-position: -webkit-sticky;
-position: sticky;
-bottom: 0;
-}
-
-  
-  
+  .dropdown-menu {
+    position: absolute;
+    border: none;
+    padding: 0;
+    font-family: 'Calibri', monospace;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    cursor:pointer;
+    text-decoration: none;
+    margin-right: 75px;
+    margin-top: 45px;
+    background-color:white;
+    text-decoration: none;
+    list-style: none;
+  }
