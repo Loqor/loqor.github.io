@@ -39,6 +39,10 @@ padding-left: 9px;
 padding-right: 9px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .header-link::after {
 content: "";
 position: absolute;
@@ -77,7 +81,6 @@ transform: scaleY(1);
     font-size: 25px;
     color: rgb(0, 0, 0);
     cursor:pointer;
-    text-decoration: none;
     margin-right: 75px;
     margin-top: 45px;
     background-color:white;
