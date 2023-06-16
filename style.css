@@ -22,9 +22,19 @@ padding-right: 1px;
 margin: 20px;
 width: fit-content;
 display: flex; /* Use flexbox to create a horizontal    layout */
-justify-content: flex-end; /* Offsets to the right header items horizontally */
+align-content: space-between; /* Offsets to the right header items horizontally */
 margin-left: auto;
 background-color: gray;
+}
+
+.logo {
+    border-radius: 50%;
+    border: 5px;
+    background-color: white;
+    position: absolute;
+    left:0;
+    top:0;
+    scale:65%
 }
 
 .header-link {
