@@ -1,18 +1,20 @@
 :root {
---orange: #FFE7BD;
---darker-orange: #F28A0F;
---red: #E5340B;
---dark-blue: #0B0835;
---blue: #0C5679;
---aqua: #3E888A;
---70sgradient: linear-gradient(to right, var(--orange) , var(--darker-orange), var(--red), var(--dark-blue), var(--blue), var(--aqua));
+--darkest-blue: #46425E;
+--medium-blue: #15788C;
+--light-blue: #00B9BE;
+--light-orange: #FFEECC;
+--medium-orange: #FFB0A3;
+--blood-orange: #FF6973;
+--70sgradient: linear-gradient(to right, var(--darkest-blue) , var(--medium-blue), var(--light-blue), var(--light-orange), var(--medium-orange), var(--blood-orange));
+--black-gradient: linear-gradient(to bottom, rgba(49, 49, 49, 0.5), rgba(5, 5, 5, 1));
 }
 
 html, body {
     height: 100%; /* Set the body and html elements to occupy full height */
     }
     body {
-        background-image: linear-gradient(to bottom, rgb(49, 49, 49), rgb(5, 5, 5));
+        background-image: var(--70sgradient), var(--black-gradient);
+        background-blend-mode:darken;
         background-size: cover;
         margin: 0;
     }
@@ -77,12 +79,26 @@ height: 10%;
     flex-shrink: 1;
     flex-basis: 200px;
     flex-direction: column;
-    flex-basis: 200px;
     margin: 10px;
     overflow: hidden;
     border-radius: 20px;
-    background-color: rgb(100, 90, 196);
-    border: 5px solid rgb(255, 255, 255)
+    background-color: #ff69737e;
+    border: 5px solid #FFB0A3aa;
+}
+
+.header-tiles {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+    flex-direction: row;
+    margin-top: 100px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-image: var(--70sgradient);
+    border-bottom: 5px solid rgba(37, 37, 37, 0.25);
 }
 
 .text {
@@ -94,10 +110,10 @@ height: 10%;
 
 .title {
     position: relative;
-    font-family: Verdana, Geneva, Tahoma, fantasy; 
+    font-family: customFont, monospace;
     font-size: 60px;
     color: white;
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid #FFB0A3aa;
 }
 
 #discord-icon {
@@ -108,6 +124,30 @@ height: 10%;
     cursor: pointer;
     text-decoration: none;
     color: white;
+}
+
+.header-buttons {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 250px;
+    margin-right: 250px;
+    border-radius: 20px;
+    font-family: customFont, monospace;
+}
+
+#home:hover {
+    color: red;
+}
+
+#home {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .a {
