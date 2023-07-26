@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Heading Toolbar</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-  <header class="heading-toolbar">
-    <nav>
-      <ul>
-        <div style="text-align: left;" class="logo"><img class="logo" src="https://cdn.discordapp.com/icons/859856751070937098/739414ee55c27f9982052065f17d6275.webp" width="128" alt="Logo" /></div>
-        <li><a class="header-link header-link1" href="index.html">Home</a></li>
-        <li><a class="header-link header-link2" href="About.html">About</a></li>
-        <li><a class="header-link header-link3" href="https://github.com/orgs/M-D-Team/discussions">Suggestions</a></li>
-        <li><button id="button" class="header-link header-link4">Mods</button></li>
-        <div class="dropdown-menu" id="expandedElement">
-          <li><a href="https://modrinth.com/mod/ait/">AIT</a></li>
-          <li><a href="https://modrinth.com/mod/k9-mod/">K9</a></li>
-          <li><a href="#">Breaking Craft (LINK DOWN)</a></li>
-          <li><a href="#">Superheroes (TBR)</a></li>
+  <head>
+    <title>Loqor's Portfolio</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  
+    <body>
+      <div class="header-toolbar">
+        <div class="background-container">
+          <div class="background-image"></div>
         </div>
-        <li><a class="header-link header-link5" href="https://discord.com/invite/wxVNDZPCyG">Discord</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <script>
-    window.onload = function() {
-      var expandedElement = document.getElementById('expandedElement');
-      expandedElement.style.display = 'none';
-
-      document.getElementById('button').addEventListener('click', function() {
-        // Toggle the display of the expanded element
-        if (expandedElement.style.display === 'none') {
-          expandedElement.style.display = 'block';
-          expandedElement.style.opacity = 1;
-        } else {
-          expandedElement.style.display = 'none';
-          expandedElement.style.opacity = 0;
-        }
-      });
-    };
-  </script>
-</body>
+        <img class="logo" src="./img/loqor-pfp-comm.png" width="128" alt="Logo">
+        <img class="name" src="./img/LOQOR.png" width="256" alt="Name">
+      </div>
+    
+    
+      <div id="page-body">
+        <div class="info-container" id="info-container">
+          <div class="about-tile tile">
+            <div class="tile-title title">Who Am I?</div>
+            <div class="who-text text">
+              <p id="name-loqor">Hello! My name is Loqor.</p>
+              <p>I have 4+ years of experience with programming, and am still currently working on a multitude of projects.</p>
+              <p>I am rather experienced in modeling, texturing, pixel art, and graphic design, along with 3D printing design.</p>
+            </div>
+          </div>
+          <div class="contact-tile tile">
+            <div class="contact-tile-title title">Contacts/Links</div>
+            <div class="contact-text text">
+              <p id="discord-server">Discord Server</p>
+              <a href="https://discord.com/invite/wxVNDZPCyG" class="header-link"><img id="discord-icon" src="./img/discord.png" width="64" alt="Discord Icon"></a>
+              <p id="github">GitHub</p>
+              <a href="https://github.com/Loqor" class="header-link"><img id="github-icon" src="./img/github.png" width="64" alt="GitHub Icon"></a>
+              <p id="youtube">YouTube</p>
+              <a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" class="header-link"><img id="youtube-icon" src="./img/youtube.png" width="64" alt="YouTube Icon"></a>
+              <p id="sketchfab">SketchFab</p>
+              <a href="https://sketchfab.com/loqor" class="header-link"><img id="sketchfab-icon" src="./img/sketchfab.png" width="64" alt="Sketchfab Icon"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    </body>
 </html>

@@ -1,100 +1,120 @@
+:root {
+--orange: #FFE7BD;
+--darker-orange: #F28A0F;
+--red: #E5340B;
+--dark-blue: #0B0835;
+--blue: #0C5679;
+--aqua: #3E888A;
+--70sgradient: linear-gradient(to right, var(--orange) , var(--darker-orange), var(--red), var(--dark-blue), var(--blue), var(--aqua));
+}
+
 html, body {
     height: 100%; /* Set the body and html elements to occupy full height */
     }
     body {
-        background-color: rgb(238, 238, 238);
+        background-image: linear-gradient(to bottom, rgb(49, 49, 49), rgb(5, 5, 5));
         background-size: cover;
         margin: 0;
     }
 
-.heading-toolbar {
-background-color: rgb(255, 255, 255);
-display: inline-block;
-width:100%;
-min-width: 100%;
+.header-toolbar {
+display: flex;
+text-align: right;
+justify-content: right;
+width: 100%;
+height: 10%;
+}
+
+.background-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+} 
+
+.background-image {
+    background-image: var(--70sgradient);
+    width: 100%;
+    height: 10%;
+    filter: blur(1px);
+    position: absolute;
 }
 
 .logo {
+    right: 40px;
+    top: 25px;
     border-radius: 50%;
-    border: 5px;
-    background-color: white;
     position: absolute;
-    left:0;
-    top:0;
-    scale:65%
+    box-shadow: 0px 0px 10px black;
 }
 
+.name {
+    left: 40px;
+    top: 20px;
+    position: absolute;
+}
 
-ul {
-list-style: none;
-padding: 0;
-padding-left: 1px;
-padding-right: 1px;
-margin: 20px;
-width: fit-content;
-display: flex; /* Use flexbox to create a horizontal    layout */
-align-content: space-between; /* Offsets to the right header items horizontally */
-margin-left: auto;
-background-color: gray;
+#page-body {
+    height: auto;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    padding-top: 150px;
+}
+
+.tile {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 200px;
+    flex-direction: column;
+    flex-basis: 200px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: rgb(100, 90, 196);
+    border: 5px solid rgb(255, 255, 255)
+}
+
+.text {
+    position: relative;
+    font-family: customFont, monospace;
+    font-size: 20px;
+    color:white;
+}
+
+.title {
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, fantasy; 
+    font-size: 60px;
+    color: white;
+    border-bottom: 5px solid white;
+}
+
+#discord-icon {
+    position: relative;
 }
 
 .header-link {
-text-decoration: none;
-position: relative;
-background-color: white;
-font-family: 'Calibri', monospace;
-font-size: 25px;
-color: rgb(0, 0, 0);
-margin: 0.5px;
-padding-left: 9px;
-padding-right: 9px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
 }
 
-a {
+.a {
     text-decoration: none;
 }
 
-.header-link::after {
-content: "";
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-height: 2px;
-padding-right: 1px;
-background-color: purple;
-transform: scaleY(0);
-transition: transform 0.4s ease-in-out;
+@font-face {
+    font-family: 'CustomFont', monospace;
+    src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZthiI2B.woff2) format('woff2');
 }
-
-.header-link:hover::after {
-transform: scaleY(1);
-}
-
-#button {
-    border: none;
-    padding: 0;
-    font-family: 'Calibri', monospace;
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    cursor:pointer;
-    text-decoration: none;
-    margin: 0;
-    padding-left: 9px;
-    padding-right: 9px;
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    border: none;
-    padding: 0;
-    font-family: 'Calibri', monospace;
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    cursor:pointer;
-    margin-right: 75px;
-    margin-top: 45px;
-    background-color:white;
-    text-decoration: none;
-    list-style: none;
-  }
