@@ -37,17 +37,24 @@ fetch(widgetUrl, {mode: 'no-cors'})
   });*/
   document.addEventListener("DOMContentLoaded", function () {
 
-    const express = require('express');
-    const app = express();
-    
-    // Define a route to get the bot's status
-    app.get('/bot-status', (req, res) => {
-      const botStatus = client.user.presence.activities[0]; // Assuming the bot has one activity
-      res.json({ status: botStatus });
-    });
-    
-    app.listen(3000, () => {
-      console.log('Server is running on port 3000');
-    });
+    fetch('/bot-status.json')
+            .then((response) => response.json())
+            .then((data) => {
+                const element = document.getElementById('pfp');
+                
+                if (data.status == "online") {
+                  element.style.border = "5px solid #43b581";
+                } else if(data.status == "dnd") {
+                    element.style.border = "5px solid #f04747";
+                } else if(data.status == "idle") {
+                    element.style.border = "5px solid #faa61a";
+                } else {
+                    element.style.border = "5px solid rgba(16 18 27 / 40%)";
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error fetching bot status:', error);
+            });
 
 });

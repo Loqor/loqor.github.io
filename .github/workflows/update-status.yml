@@ -1,0 +1,25 @@
+name: Update Bot Status
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'  # Adjust the schedule as needed
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update Bot Status
+        run: echo '{"status": "Your Bot Status"}' > bot-status.json
+        # Replace "Your Bot Status" with your bot's actual status
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add bot-status.json
+          git commit -m "Update bot status"
+          git push
