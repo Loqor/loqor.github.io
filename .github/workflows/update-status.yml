@@ -12,14 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Update Bot Status
-        run: echo '{"status": "Your Bot Status"}' > bot-status.json
-        # Replace "Your Bot Status" with your bot's actual status
-
-      - name: Commit and push changes
+      - name: Update Bot Status and Commit
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          echo '{"status": "Your Bot Status"}' > bot-status.json
+          git config user.name "Loqor"
+          git config user.email "1zaiahpro1@gmail.com"
           git add bot-status.json
           git commit -m "Update bot status"
           git push

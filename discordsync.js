@@ -37,24 +37,16 @@ fetch(widgetUrl, {mode: 'no-cors'})
   });*/
   document.addEventListener("DOMContentLoaded", function () {
 
-    fetch('/bot-status.json')
-            .then((response) => response.json())
-            .then((data) => {
-                const element = document.getElementById('pfp');
-                
-                if (data.status == "online") {
-                  element.style.border = "5px solid #43b581";
-                } else if(data.status == "dnd") {
-                    element.style.border = "5px solid #f04747";
-                } else if(data.status == "idle") {
-                    element.style.border = "5px solid #faa61a";
-                } else {
-                    element.style.border = "5px solid rgba(16 18 27 / 40%)";
-                }
+    const url = 'file:///D:/Users/1zaia/OneDrive/Documents/GitHub/loqor.github.io/bot-status.json';
 
-            })
-            .catch((error) => {
-                console.error('Error fetching bot status:', error);
-            });
+    fetch(url, {mode: 'no-cors'})
+      .then(response => response)
+      .then(data => {
+        // Handle the JSON data here
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
 
 });
