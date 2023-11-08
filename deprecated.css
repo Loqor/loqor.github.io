@@ -1,0 +1,166 @@
+:root {
+--darkest-blue: #46425E;
+--medium-blue: #15788C;
+--light-blue: #00B9BE;
+--light-orange: #FFEECC;
+--medium-orange: #FFB0A3;
+--blood-orange: #FF6973;
+--70sgradient: linear-gradient(to right, var(--darkest-blue) , var(--medium-blue), var(--light-blue), var(--light-orange), var(--medium-orange), var(--blood-orange));
+--black-gradient: linear-gradient(to bottom, rgba(49, 49, 49, 0.5), rgba(5, 5, 5, 1));
+}
+
+html, body {
+    height: 100%; /* Set the body and html elements to occupy full height */
+    }
+    body {
+        background-image: var(--70sgradient), var(--black-gradient);
+        background-blend-mode:darken;
+        background-size: cover;
+        margin: 0;
+    }
+
+.header-toolbar {
+display: flex;
+text-align: right;
+justify-content: right;
+width: 100%;
+height: 10%;
+}
+
+.background-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+} 
+
+.background-image {
+    background-image: var(--70sgradient);
+    width: 100%;
+    height: 10%;
+    filter: blur(1px);
+    position: absolute;
+}
+
+.logo {
+    right: 40px;
+    top: 25px;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0px 0px 10px black;
+    z-index: 1;
+}
+
+.name {
+    left: 40px;
+    top: 20px;
+    position: absolute;
+}
+
+#page-body {
+    height: auto;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 75px;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    margin-top: 75px;
+}
+
+.tile {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 200px;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 10px;
+    /*background-color: #ff69737e;*/
+
+/*background-color: #ffffff1e;*/
+    background-color: rgba(16 18 27 / 40%);
+    backdrop-filter: blur(20px);
+    background-image: radial-gradient(#ffffff71 1.2000000000000002px, #00000000 1.2000000000000002px);
+    background-size: 24px 24px;
+}
+
+.header-tiles {
+    position: relative;
+    display: flex;
+    text-align: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+    flex-direction: row;
+    margin-top: 100px;
+    overflow: hidden;
+    border-radius: 20px;
+    /*background-image: var(--70sgradient);*/
+    background-color: rgba(16 18 27 / 40%);
+    backdrop-filter: blur(20px);
+    border-bottom: 5px solid rgba(37, 37, 37, 0.25);
+}
+
+.text {
+    position: relative;
+    font-family: 'DM Sans', serif;
+    font-size: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    color:white;
+}
+
+.title {
+    position: relative;
+    font-family: 'DM Sans', serif;
+    font-size: 60px;
+    color: white;
+}
+
+#discord-icon {
+    position: relative;
+}
+
+.header-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.header-buttons {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 250px;
+    margin-right: 250px;
+    border-radius: 20px;
+    font-family: 'DM Sans', serif;
+    cursor: pointer;
+    text-decoration: none;
+    border:groove rgba(0, 0, 0, 0.11) 2px;
+    background-color: rgba(0, 0, 0, 0.11);
+}
+    
+.header-buttons:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.a {
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
