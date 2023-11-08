@@ -33,13 +33,17 @@ function updateUI(data) {
   const albumart = document.getElementById('albumart');
 
   if (status == 'online') {
-    element.style.border = '5px solid #43b581';
+    const onl = '5px solid #43b581';
+    element.style.border = onl;
   } else if (status == 'dnd') {
-    element.style.border = '5px solid #f04747';
+    const dnd = '5px solid #f04747';
+    element.style.border = dnd;
   } else if (status == 'idle') {
-    element.style.border = '5px solid #faa61a';
+    const idl = '5px solid #faa61a';
+    element.style.border = idl;
   } else if (status == 'offline') {
-    element.style.border = '5px solid rgba(16 18 27 / 40%)';
+    const ofl = '5px solid rgba(16 18 27 / 40%)';
+    element.style.border = ofl;
   }
 
   if (data.listening_to_spotify) {

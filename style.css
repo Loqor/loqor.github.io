@@ -185,10 +185,11 @@ footer {
 .social-media li {
     display: inline;
     margin-right: 10px;
-}
-
-#filtimg, #filtimg1, #filtimg2{
     text-decoration: none;
     color: var(--retro-white);
     filter: url(#blacktoretrowhite);
+}
+
+#filtimg4 {
+    scale: 0.8;
 }
