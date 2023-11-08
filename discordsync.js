@@ -1,52 +1,87 @@
-//fetch(discordApi, {
-//    method: 'GET',
-//    mode: 'no-cors'
-//})
-//  .then(response => response.json())
-//  .then(data => {
-//    const element = document.getElementById('pfp');
-//    
-//    const loqorMember = data.members.find(member => member.username === "Loqor");
-//    
-//    if (loqorMember.status == "online") {
-//      element.style.border = "5px solid #43b581";
-//    } else if(loqorMember.status == "dnd") {
-//        element.style.border = "5px solid #f04747";
-//    } else if(loqorMember.status == "idle") {
-//        element.style.border = "5px solid #faa61a";
-//    } else {
-//        element.style.border = "5px solid rgba(16 18 27 / 40%)";
-//    }
-// })
-// .catch(error => {
-//   console.error('API request error:', error);
-// });
-//
-// console.log("what");
+const lanyardUrl = 'https://api.lanyard.rest/v1/users/368694479391293442';
+let previousData = null; // Store the previous data
+let intervalId; // Store the interval ID
 
-/*const widgetUrl = 'https://canary.discord.com/widget?id=859856751070937098';
+function fetchDiscordData() {
+  fetch(lanyardUrl)
+    .then(response => response.json())
+    .then(res => {
+      console.log(res.data);
+      if (isDataChanged(previousData, res.data)) {
+        // Data has changed, update the UI
+        updateUI(res.data);
+        previousData = res.data; // Update the previous data
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
-// Make a request to the widget URL
-fetch(widgetUrl, {mode: 'no-cors'})
-  .then(response => response)
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error fetching the widget data:', error);
-  });*/
-  document.addEventListener("DOMContentLoaded", function () {
+function isDataChanged(previousData, currentData) {
+  // Implement your logic to compare data and return true if it has changed
+  return JSON.stringify(previousData) !== JSON.stringify(currentData);
+}
 
-    const url = 'file:///D:/Users/1zaia/OneDrive/Documents/GitHub/loqor.github.io/bot-status.json';
+function updateUI(data) {
+  // Update the UI based on the new data
+  const status = data.discord_status;
+  const spotify = data.spotify;
+  const element = document.getElementById('pfp');
+  const song = document.getElementById('spotifysong');
+  const artistalbum = document.getElementById('spotifyartistalbum');
+  const albumart = document.getElementById('albumart');
 
-    fetch(url, {mode: 'no-cors'})
-      .then(response => response)
-      .then(data => {
-        // Handle the JSON data here
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+  if (status == 'online') {
+    element.style.border = '5px solid #43b581';
+  } else if (status == 'dnd') {
+    element.style.border = '5px solid #f04747';
+  } else if (status == 'idle') {
+    element.style.border = '5px solid #faa61a';
+  } else if (status == 'offline') {
+    element.style.border = '5px solid rgba(16 18 27 / 40%)';
+  }
 
+  if (data.listening_to_spotify) {
+    song.textContent = spotify.song;
+    artistalbum.textContent = spotify.artist + ' - ' + spotify.album;
+    albumart.src = spotify.album_art_url;
+    albumart.style.boxShadow = '2px 2px 20px black';
+  } else {
+    song.textContent = 'No Music Here; ' + status.toUpperCase();
+    artistalbum.textContent = '';
+    albumart.src = './img/spotify.png';
+    albumart.style.boxShadow = 'none';
+  }
+}
+
+function startInterval() {
+  intervalId = setInterval(fetchDiscordData, 10 * 1000);
+}
+
+function clearInterval() {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+}
+
+window.addEventListener('beforeunload', () => {
+  clearInterval();
+});
+
+window.addEventListener('load', () => {
+  startInterval();
+  fetchDiscordData();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const buttonelement = document.getElementById('albumart');
+  const refreshdataelement = document.getElementById('spotifysong');
+  buttonelement.addEventListener('click', () => {
+    window.location.href = 'https://open.spotify.com/track/' + previousData.spotify.track_id;
+  });
+  refreshdataelement.addEventListener('click', () => {
+    fetchDiscordData();
+  });
 });

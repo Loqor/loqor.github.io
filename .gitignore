@@ -1,4 +1,0 @@
-# Ignore log files
-*.log
-# Ignore files in the "temp" directory
-temp/

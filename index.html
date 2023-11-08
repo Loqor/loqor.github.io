@@ -13,32 +13,15 @@
         <h1>Welcome to Loqor's Portfolio</h1>
         <nav>
             <ul>
-                <li><a href="#about">About Me</a></li>
+                <li><a href="About.html">About Me</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container" id="container">
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="particle"></div> -->
-        <!-- <div class="border"></div> -->
-        <!-- <div class="border"></div> -->
-    </div>
-    <script src="script.js"></script>
+    <div class="container" id="container"></div>
+    <script src="lavaballs.js"></script>
     <svg>
         <defs>
             <filter id="goo">
@@ -63,15 +46,13 @@
     <main>
         <!-- About Me section -->
         <section id="about">
-            <iframe src="
-        https://canary.discord.com/widget?id=859856751070937098&theme=dark" 
-        width="350" height="500" allowtransparency="true" 
-        frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox 
-        allow-same-origin allow-scripts" id="widget"></iframe>
             <script src="discordsync.js"></script>
             <img src="./img/loqor-pfp-comm.png" class="pfp" id="pfp">
-            <h1>About Me</h1>
-            <p>Your introduction and background information go here.</p>
+            <img src="transparent" class="albumart" id="albumart">
+            <div class="songdetails">
+                <h1><a id ="spotifysong"></a></h1>
+                <p><a id ="spotifyartistalbum"></a></p>
+            </div>
         </section>
 
         <!-- Portfolio Projects section -->
@@ -85,11 +66,6 @@
                 <a href="https://modrinth.com/mod/k9-mod"><img src="https://cdn.modrinth.com/data/KZvTlFBC/c8fff101d3ce8b1e3b39d0dc8fd2509c06021fe1.png" class="listmods" width="111" alt="Modrinth for K9"></a>
             </div>
 
-            <div class="project">
-                <h2>Website</h2>
-                <p>You're viewing it right now :)</p>
-            </div>
-
             <!-- Add more projects as needed -->
         </section>
     </main>
@@ -98,9 +74,11 @@
         <!-- Footer content, such as contact information, social media links, or copyright notice -->
         <!-- For example: -->
         <ul class="social-media">
-            <li><a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank"><img src="./img/youtube_aesthetic.png" width="64"></a></li>
-            <li><a href="https://github.com/loqor" target="_blank"><img src="./img/github_aesthetic.png" width="64" id="filteredimage"></a></li>
+            <li><a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank"><img src="./img/youtube_aesthetic.png" width="64" id="filtimg"></a></li>
+            <li><a href="https://github.com/loqor" target="_blank"><img src="./img/github_aesthetic.png" width="64" id="filtimg1"></a></li>
+            <li><a href="https://sketchfab.com/loqor" target="_blank"><img src="./img/sketchfab_aesthetic.png" width="64" id="filtimg2"></a></li>
             <p>&copy; 2023 Loqor's Portfolio</p>
+        </ul>
     </footer>
 </body>
 </html>
