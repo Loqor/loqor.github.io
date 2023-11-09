@@ -6,13 +6,12 @@
     <title>Loqor's Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <h1>Welcome to Loqor's Portfolio</h1>
         <nav>
             <ul>
-                <li><a href="About.html">About Me</a></li>
+                <li><a href="#about">About Me</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -24,17 +23,14 @@
     <svg>
         <defs>
             <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" 
-                stdDeviation="10"/>
-                <feColorMatrix in="name" mode="matrix"
-                values="1 0 0 0 0
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
+                <feColorMatrix in="name" mode="matrix" values="1 0 0 0 0
                         0 1 0 0 0
                         0 0 1 0 0
                         0 0 0 20 -15"/>
             </filter>
             <filter id="blacktoretrowhite">
-                <feColorMatrix in="name" mode="matrix"
-                values="0 0 0 0 0.9411764706
+                <feColorMatrix in="name" mode="matrix" values="0 0 0 0 0.9411764706
                         0 0 0 0 0.9647058824
                         0 0 0 0 0.9411764706
                         1 1 1 1 0"/>
@@ -43,34 +39,48 @@
     </svg>
 
     <main>
-        <section id="about">
+        <section id="toppage">
             <script src="discordsync.js"></script>
             <img src="./img/loqor-pfp-comm.png" class="pfp" id="pfp">
-            <img src="transparent" class="albumart" id="albumart">
-            <div class="onlinesqr" id="onlinesqr"></div>
             <div class="songdetails">
+                <img src="./img/spotify.png" class="albumart" id="albumart">
                 <h1><a id ="spotifysong"></a></h1>
                 <p><a id ="spotifyartistalbum"></a></p>
             </div>
+            <div class="pfp" id="shadow"></div>
         </section>
         <section id="portfolio">
             <h1>Portfolio Projects</h1>
             <div class="project">
                 <h2>Minecraft Mods</h2>
                 <p>Mods made for various modloaders and Minecraft versions!</p>
-                <a href="https://modrinth.com/mod/ait"><img src="https://cdn.modrinth.com/data/ZMP9ZjB9/2c6053e91f4177904cf7f9a6118ae8bfe15be297.png" class="listmods" width="106" alt="Modrinth for AIT"></a>
-                <a href="https://modrinth.com/mod/k9-mod"><img src="https://cdn.modrinth.com/data/KZvTlFBC/c8fff101d3ce8b1e3b39d0dc8fd2509c06021fe1.png" class="listmods" width="111" alt="Modrinth for K9"></a>
+                <a href="https://modrinth.com/mod/superhero"><img src="https://cdn.modrinth.com/data/VPum1CA1/75353fde679e237f3615bbb1515cf1b66e5b40ed.png" class="listmods" width="115" alt="Modrinth for Timeless Superheroes"></a>
+                <a href="https://modrinth.com/mod/ait"><img src="https://cdn.modrinth.com/data/ZMP9ZjB9/2c6053e91f4177904cf7f9a6118ae8bfe15be297.png" class="listmods" width="125" alt="Modrinth for AIT"></a>
+                <a href="https://modrinth.com/mod/k9-mod"><img src="https://cdn.modrinth.com/data/KZvTlFBC/c8fff101d3ce8b1e3b39d0dc8fd2509c06021fe1.png" class="listmods" width="115" alt="Modrinth for K9"></a>
+                <h2>Websites</h2>
+                <p>Sites that I've made, both custom and on spacehey.com :p.</p>
+                <a href="https://loqor.github.io"><img src="./img/loqor-pfp-white.png" class="listsites" width="106" alt="This Page"></a>
+                <a href="https://spacehey.com/loqor"><img src="./img/spacehey.png" class="listsites filtimg" width="110" alt="Spacehey"></a>
+            </div>
+        </section>
+
+        <section id="about">
+            <canvas id="dividers"><script src="matrixualdivider.js"></script></canvas>
+            <h1>About Me</h1>
+            <div class="aboutme">
+                <h2>Experience So Far...</h2>
+                <p>What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little "clever" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo.</p>
             </div>
         </section>
     </main>
 
     <footer>
         <ul class="social-media">
-            <li><a href="discord.gg/sayPDMzPqH" target="_blank"><img src="./img/discord_aesthetic.png" width="64" id="filtimg"></a></li>
-            <li><a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank"><img src="./img/youtube_aesthetic.png" width="64" id="filtimg1"></a></li>
-            <li><a href="https://github.com/loqor" target="_blank"><img src="./img/github_aesthetic.png" width="64" id="filtimg2"></a></li>
-            <li><a href="https://sketchfab.com/loqor" target="_blank"><img src="./img/sketchfab_aesthetic.png" width="64" id="filtimg3"></a></li>
-            <li><a href="https://namemc.com/profile/Loqor.2" target="_blank"><img src="./img/namemc.png" width="64" id="filtimg4"></a></li>
+            <li><a href="discord.gg/sayPDMzPqH" target="_blank"><img src="./img/discord_aesthetic.png" width="64" id="discord" class="filtimg"></a></li>
+            <li><a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank"><img src="./img/youtube_aesthetic.png" width="64" id="youtube" class="filtimg"></a></li>
+            <li><a href="https://github.com/loqor" target="_blank"><img src="./img/github_aesthetic.png" width="64" id "github" class="filtimg"></a></li>
+            <li><a href="https://sketchfab.com/loqor" target="_blank"><img src="./img/sketchfab_aesthetic.png" width="64" id="sketchfab" class="filtimg"></a></li>
+            <li><a href="https://namemc.com/profile/Loqor.2" target="_blank"><img src="./img/namemc.png" width="64" id="namemc" class="filtimg"></a></li>
             <p>&copy; 2023 Loqor's Portfolio</p>
         </ul>
     </footer>
