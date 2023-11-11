@@ -19,7 +19,7 @@ html {
     --medium-orange: #FFB0A3;
     --blood-orange: #FF6973;
     --seventiesgradient: linear-gradient(to right, var(--darkest-blue), var(--medium-blue), var(--light-blue), var(--light-orange), var(--medium-orange), var(--blood-orange));
-    --phongshadedgradient: linear-gradient(to top right, var(--darkest-blue), var(--medium-blue), var(--light-blue));
+    --phongshadedgradient: linear-gradient(to top right, var(--blood-orange), var(--medium-orange), var(--light-orange));
     --black-gradient: linear-gradient(to bottom, rgba(49, 49, 49, 0.5), rgba(5, 5, 5, 1));
 }
 
@@ -37,7 +37,7 @@ html {
     height: 100px;
     top: -20%;
     bottom: 20%;
-    background-image: var(--phongshadedgradient);
+    background-color: rgba(16, 18, 27, 0.8);
     position: absolute;
     border-radius: 50%;
 }
@@ -48,7 +48,7 @@ body {
     height: 200vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom left, var(--light-blue), var(--medium-blue), var(--darkest-blue));
+    /* background: linear-gradient(to top right, var(--darkest), var(--midtone), var(--lightest));*/
     background-attachment: fixed;
     margin: 0;
 }
@@ -88,15 +88,20 @@ main {
     border-radius: 10px;
     cursor: pointer;
     position: fixed;
+    display: grid;
+    grid-template-columns: auto auto;
     text-align: left;
     z-index: 1;
-    padding: 10px;
     bottom: 10px;
-    left: 5px;
+    left: 10px;
+}
+
+#toppage h1 {
+    margin-left: 10px;
 }
 
 .albumart {
-    width: 190px;
+    width: 100px;
     border-radius: 5%;
     z-index: 1;
     box-shadow: 2px 2px 10px black;
