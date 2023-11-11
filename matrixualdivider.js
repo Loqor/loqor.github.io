@@ -1,7 +1,7 @@
 const canvas = document.getElementById('dividers');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.setAttribute('width', window.innerWidth);
+canvas.setAttribute('height', 30);
 
 class Symbol {
     constructor(x, y, fontSize, canvasHeight) {
@@ -65,8 +65,8 @@ function animate(timeStamp) {
 animate(0);
 
 window.addEventListener('resize', function () {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.setAttribute('width', window.innerWidth);
+    canvas.setAttribute('height', 30);
     effect.resize(canvas.width, canvas.height);
     gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, 'red');
