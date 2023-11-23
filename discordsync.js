@@ -63,7 +63,7 @@ function updateUI(data) {
       }
     });
 
-    albumart.style.boxShadow = '2px 2px 20px black';
+    //albumart.style.boxShadow = '2px 2px 20px black';
   } else {
     // Set default background if no album art
     setGradientColors(lavaballs, ['black', 'gray', 'white']);
@@ -71,7 +71,7 @@ function updateUI(data) {
     song.textContent = 'No Song Detected... ' + status.toUpperCase();
     artistalbum.textContent = 'No Artist - No Album';
     albumart.src = './img/spotify.png';
-    albumart.style.boxShadow = 'none';
+    //albumart.style.boxShadow = 'none';
   }
 }
 
