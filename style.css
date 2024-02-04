@@ -137,7 +137,7 @@ header nav ul li a {
 #about {
     backdrop-filter: blur(var(--bluramount));
     margin-top: 10vh;
-    border-top: solid 5px rgba(16, 18, 27, 0.5);
+    /*border-top: solid 5px rgba(16, 18, 27, 0.5);*/
 }
 
 main {
@@ -156,7 +156,7 @@ main {
     grid-template-rows: 100px;
     text-align: left;
     z-index: 1;
-    top: 385px;
+    top: 363.5px;
     left: 10px;
 }
 
@@ -320,7 +320,7 @@ section {
 
 .mods .listmods:hover {
     margin-top: 1.5px;
-    scale: 1.35;
+    scale: 1.2;
     border: 5px solid var(--retro-white);
 }
 
