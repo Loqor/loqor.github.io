@@ -19,9 +19,27 @@ html {
     --medium-orange: #FFB0A3;
     --blood-orange: #FF6973;
     --bluramount: 15px;
-    --seventiesgradient: linear-gradient(to bottom right, var(--darkest-blue), var(--medium-blue), var(--light-blue), var(--light-orange), var(--medium-orange), var(--blood-orange));
+    --seventiesgradient: linear-gradient(to top, var(--darkest-blue), var(--medium-blue), var(--light-blue), var(--light-orange), var(--medium-orange), var(--blood-orange));
     --phongshadedgradient: linear-gradient(to top right, var(--blood-orange), var(--medium-orange), var(--light-orange));
     --black-gradient: linear-gradient(to bottom, rgba(49, 49, 49, 0.5), rgba(5, 5, 5, 1));
+}
+
+::-webkit-scrollbar {
+    width: 1em;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--seventiesgradient);
+}
+
+::-webkit-scrollbar-thumb {
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+    background: rgba(16, 18, 27, 0.5);
+    border-radius : 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 18, 27, 0.795);
 }
 
 .container {
@@ -54,12 +72,13 @@ body {
     margin: 0;
 }
 
-header {
-    position: absolute;
+.musicdesc {
+    position: relative;
     text-align: right;
     color: var(--retro-white);
     width: fit-content;
     margin-top: 52px;
+    margin-bottom: 20px;
     padding: 22.5px;
     border-top-right-radius: 5%;
     border-bottom-right-radius: 5%;
@@ -69,9 +88,8 @@ header {
     z-index: 1;
 }
 
-header h1, h12 {
+.musicdesc h1, h12 {
     width: 480px;
-    height: 520px;
     text-align: left;
     word-wrap: break-word;
     font-size: 72px;
@@ -86,8 +104,8 @@ main h6 {
     text-align: center;
 }
 
-header h12 {
-    margin-left: 20px;
+.musicdesc h12 {
+    margin-left: 60px; 
     /* text-shadow: -4px 4px #ef3550,
                -8px 8px #f48fb1,
                -12px 12px #7e57c2,
@@ -108,7 +126,7 @@ header h12 {
                -36px 36px var(--darkest-blue);
 }
 
-header nav ul li a {
+.musicdesc nav ul li a {
     text-decoration: none;
     color: var(--retro-white);;
 }
@@ -134,6 +152,13 @@ header nav ul li a {
     }
 } */
 
+#portfolio {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    height: fit-content;
+}
+
 #about {
     backdrop-filter: blur(var(--bluramount));
     margin-top: 10vh;
@@ -143,6 +168,11 @@ header nav ul li a {
 main {
     color: var(--retro-white);
     text-align: center;
+}
+
+.pfpdesc {
+    display: grid;
+    grid-column: auto;
 }
 
 .songdetails {
@@ -177,11 +207,10 @@ main {
 .pfp {
     width: 380px;
     border-radius: 50%;
-    position: absolute;
-    z-index: 1;
-    top: 52px;
-    left: 765px;
+    position: relative;
+    margin: auto;
     cursor: pointer;
+    z-index: 1;
 }
 
 .description {
@@ -189,9 +218,7 @@ main {
     overflow-wrap: break-word;
     font-weight: 600;
     font-size: 24px;
-    top: 442px;
-    left: 765px;
-    position: absolute;
+    position: relative;
     background-color: rgba(16, 18, 27, 0.5);
     border: 1px solid rgba(51, 53, 65, 0.8);
     width: 380px;
@@ -423,15 +450,15 @@ svg {
 .description .htmlabout {
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
     font-size: 30px;
-    text-shadow: -2px 2px #ef3550,
-               -4px 4px #f48fb1,
-               -6px 6px #7e57c2,
-               -8px 8px #2196f3,
-               -10px 10px #26c6da,
-               -12px 12px #43a047,
-               -14px 14px #eeff41,
-               -16px 16px #f9a825,
-               -18px 18px #ff5722;
+    text-shadow: -2px 2px var(--light-blue),
+               -4px 4px var(--medium-blue),
+               -6px 6px var(--darkest-blue),
+               -8px 8px var(--blood-orange),
+               -10px 10px var(--medium-orange),
+               -12px 12px var(--light-orange),
+               -14px 14px var(--light-blue),
+               -16px 16px var(--medium-blue),
+               -18px 18px var(--darkest-blue);
 }
 
 .description .htmlabout:hover {
