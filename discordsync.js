@@ -56,6 +56,7 @@ function updateUI(data) {
 
       // Set background colors based on the extracted colors
       setGradientColors(body, [mostAbundantColor1, mostAbundantColor2, mostAbundantColor3]);
+      body.style.backgroundRepeat = "no-repeat";
 
       // Set lavaball colors based on less abundant colors
       for (let i = 0; i < lavaballs.length; i++) {
