@@ -60,7 +60,7 @@ function updateUI(data) {
 
       // Set lavaball colors based on less abundant colors
       for (let i = 0; i < lavaballs.length; i++) {
-        setGradientColors(lavaballs[i], [lessAbundantColor1, lessAbundantColor2, lessAbundantColor3]);
+        setGradientColors(lavaballs[i], [lessAbundantColor3, lessAbundantColor2, lessAbundantColor1]);
       }
     });
 
