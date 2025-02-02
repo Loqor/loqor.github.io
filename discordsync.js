@@ -32,6 +32,7 @@ function updateUI(data) {
   const spotify = data.spotify;
   const element = document.getElementById('pfp');
   const song = document.getElementById('spotifysong');
+  const statusMarker = document.getElementById('statusDesc');
   const artistalbum = document.getElementById('spotifyartistalbum');
   const albumart = document.getElementById('albumart');
   const body = document.body;
@@ -39,8 +40,13 @@ function updateUI(data) {
 
   element.style.border = `5px solid ${statusColors[status] || statusColors.offline}`;
 
+  const textOfActivity = '\"' + data.activities[0].state + '\" - Loqor' || 'From dust we came, to dust we shall return.';
+  statusMarker.style.fontStyle = 'italic';
+  statusMarker.textContent = textOfActivity;
+
   if (data.listening_to_spotify) {
     song.textContent = spotify.song || 'No Song Detected... ' + status.toUpperCase();
+
     artistalbum.textContent = spotify.artist ? `${spotify.artist} - ${spotify.album}` : 'No Artist - No Album';
     albumart.src = spotify.album_art_url;
 
