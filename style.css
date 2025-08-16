@@ -75,13 +75,15 @@ body {
 
 .musicdesc {
     position: relative;
+    overflow-x: hidden;
     text-align: right;
     color: var(--retro-white);
-    width: fit-content;
+    width: 28vw;
+    height: auto;
     margin-top: 52px;
     margin-bottom: 20px;
     margin-left: 20px;
-    padding: 22.5px;
+    padding: 22.5px -10px 22.5px 22.5px;
     border-radius: 20px;
     background-color: rgba(16, 18, 27, 0.5);
     border: 1px solid rgba(90, 90, 90, 0.5);
@@ -90,7 +92,8 @@ body {
 }
 
 .musicdesc h1, h12 {
-    width: 480px;
+    width: fit-content;
+    padding-left: 50px;
     text-align: left;
     word-wrap: break-word;
     font-size: 72px;
@@ -98,7 +101,7 @@ body {
 
 main h6 {
     position: absolute;
-    width: 520px;
+    width: 38vw;
     font-size: 24px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -135,30 +138,32 @@ main {
     border-color: rgba(16, 18, 27, 0.4);
     border-radius: 20px;
     cursor: pointer;
-    position: absolute;
+    position: relative;
     display: grid;
-    grid-template-columns: auto auto;
-    margin-left: 30px;
-    grid-column-gap: 15px;
-    grid-template-rows: 100px;
+    width: auto;
+    grid-template-columns: 12.5vw 1fr;
+    padding-left: 20px;
+    padding-top: 10vh;
     text-align: left;
     z-index: 1;
-    top: 363.5px;
-    left: 10px;
+    margin: 0;
+    top: 0;
+    left: 0;
 }
 
 .songdetails h1 {
     font-size: 24px;
     word-wrap: break-word;
-    text-wrap: wrap;
-    padding-left: 5px;
-    width: 14vw;
-    height: 25vh;
-    overflow-y: hidden;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
+    overflow-wrap: normal;
+    overflow-x: hidden;
 }
 
 .albumart {
-    width: 12.5vw;
+    width: 100%;
     z-index: 1;
     border-radius: 20px;
     cursor: pointer;
@@ -176,7 +181,7 @@ main {
 }
 
 .pfp {
-    width: 380px;
+    width: 22vw;
     border-radius: 50%;
     position: relative;
     margin: auto;
@@ -185,7 +190,7 @@ main {
 }
 
 .self {
-    width: 300px;
+    width: 22vw;
     border-radius: 50%;
     position: relative;
     margin: auto;
@@ -200,11 +205,12 @@ main {
     font-size: 24px;
     align-content: center;
     position: relative;
+    overflow-x: hidden;
     background-color: rgba(16, 18, 27, 0.5);
     border: 1px solid rgba(90, 90, 90, 0.5);
     backdrop-filter: blur(var(--bluramount));
-    width: 380px;
-    height: 175px;
+    width: 22vw;
+    height: 19vh;
     margin: auto;
     border-radius: 20px;
     padding: 20px;
@@ -255,8 +261,9 @@ section {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 20px;
-    height: 175px;
-    width: 520px;
+    height: 19vh;
+    width: 28vw;
+    overflow-x: hidden;
     padding-left: 100%;
     justify-content: right;
     text-align: center;
@@ -273,8 +280,8 @@ section {
 .lqrsite, .spchey {
     display: inline-block;
     margin-inline: 10px;
-    width: 175px;
-    height: 175px;
+    width: 16vw;
+    height: 16vh;
     padding: 20px;
     margin-bottom: 20px;
     color: var(--retro-white);
@@ -357,7 +364,7 @@ section {
 #dividers {
     position: static;
     width: 100%;
-    height: 30px;
+    height: 2vh;
     overflow-x: hidden;
     overflow-y: hidden;
     color: var(--retro-white);
@@ -383,8 +390,8 @@ section {
 }
 
 #css {
-    width: 50px;
-    height: 50px;
+    width: 2vw;
+    height: 2vh;
     margin-top: 25px;
     padding-top: 12.5px;
     margin-left: 25px;
@@ -422,7 +429,7 @@ footer {
     bottom: 20px;
     align-self: center;
     width: 30vw;
-    height: 120px;
+    height: 12vh;
     background: var(--retro-black);
     color: var(--retro-white);
     text-align: center;
@@ -438,14 +445,14 @@ footer {
 
 .social-media {
     background-color: transparent;
-    height: 40px; /* Fixed height */
+    height: 3vh; /* Fixed height */
     align-items: center;
     overflow: unset;
 }
 
 .social-media li {
     display: inline-block;
-    height: 40px;
+    height: 4vh;
     margin-inline: 10px;
     text-decoration: none;
     color: var(--retro-white);
