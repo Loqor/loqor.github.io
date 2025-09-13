@@ -18,7 +18,7 @@
           kofiWidgetOverlay.draw('loqor', {
             'type': 'floating-chat',
             'floating-chat.donateButton.text': 'Support me',
-            'floating-chat.donateButton.background-color': 'rgba(16, 18, 27, 0.5)',
+            'floating-chat.donateButton.background-color': 'rgba(255, 255, 255, 0.2)',
             'floating-chat.donateButton.text-color': '#fff'
           });
         </script></div>
@@ -43,6 +43,22 @@
         </defs>
     </svg>
 
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0"  width="0" height="0" style="position: relative;">
+	<defs>
+		<filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+			<feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="92" result="noise"></feTurbulence>
+			<feGaussianBlur in="noise" stdDeviation="10 10" edgeMode="wrap" result="blurred"></feGaussianBlur>
+			<feDisplacementMap in2="blurred" scale="50" xChannelSelector="R" yChannelSelector="G" result="urmom"></feDisplacementMap>
+			<feBlend in="urmom" in2="SourceGraphic" mode="normal" result="blend"></feBlend>
+			<feGaussianBlur in="blend" stdDeviation="4 4" edgeMode="wrap" result="gaussit"></feGaussianBlur>
+			<feColorMatrix in="gaussit" type="matrix" values="0.5 0   0   0   0  
+			                                                  0.5 0   0   0   0  
+			                                                  0.5 0   0   0   0  
+			                                                  0   0   0   0   0"></feColorMatrix>
+		</filter>
+	</defs>
+</svg>
+
     <main>
         <section id="portfolio">
             <h6>Loqor's Portfolio</h6>
@@ -52,13 +68,15 @@
             <script src="discordsync.js"></script>
             <div class="songdetails">
                 <img src="./img/spotify.png" class="albumart" id="albumart">
-                <h1><a id ="spotifysong" style="font-weight: 600;"></a><br>
+                <h1><a id ="spotifysong" style="font-weight: 600;"></a>
                     <a id ="spotifyartistalbum" style="font-weight: 100; font-size: 18px;"></a>
                 </h1>
             </div>
         </div>
             <div class="pfpdesc">
-                <img src="./img/loqor-pfp-comm.png" class="pfp pfpbg" id="pfp">
+                <div class="pfp pfpbg" id="pfp">
+                    <img src="./img/loqor-pfp-comm.png" class="realpfp" id="realpfp">
+                </div>
                 <div class="description">
                     <p id = "statusDesc">I now officially own the domain loqor.dev!</p>
                 </div>
@@ -101,17 +119,16 @@
                 <p>Name: Isaiah Crace
                     <br>Age: 20
                     <br>Nationality: American
-                    <br>Occupation: Freelance Programmer, 
-                    <br>Barista
+                    <br>Occupation: Professional Programmer, 
+                    <br>Marital Status: Husband
                     <br>Hobbies:
                     <br>&bull; Film Photography
                     <br>&bull; Programming (of course)
                     <br>&bull; Electronics
-                    <br>&bull; Digital Art
                     <br>&bull; Music
                 </p>
-                <img src="./img/self.png" class="pfp pfpbg" id="pfp">
-                <p>Junior Programmer
+                <img src="./img/self.png" class="realpfp">
+                <p>Professional Programmer
                     <br>Proficient in:
                     <br>&bull; Java
                     <br>&bull; JavaScript
@@ -136,12 +153,12 @@
 
     <footer>
         <ul class="social-media">
+            <p>&copy; 2025 Loqor's Portfolio</p>
             <li><a href="https://discord.gg/D5Et6Ux7BS" target="_blank"><img src="./img/discord_aesthetic.png" width="64" id="discord" class="filtimg"></a></li>
             <li><a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank"><img src="./img/youtube_aesthetic.png" width="64" id="youtube" class="filtimg"></a></li>
             <li><a href="https://github.com/loqor" target="_blank"><img src="./img/github_aesthetic.png" width="64" id = "github" class="filtimg"></a></li>
             <li><a href="https://sketchfab.com/loqor" target="_blank"><img src="./img/sketchfab_aesthetic.png" width="64" id="sketchfab" class="filtimg"></a></li>
             <li><a href="https://modrinth.com/user/Loqor" target="_blank"><img src="./img/modrinth.png" width="64" id="modrinth" class="filtimg"></a></li>
-            <p>&copy; 2025 Loqor's Portfolio</p>
         </ul>
     </footer>
     <script src="dml.js"></script>

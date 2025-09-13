@@ -30,7 +30,7 @@ function updateUI(data) {
 
   const status = data.discord_status;
   const spotify = data.spotify;
-  const element = document.getElementById('pfp');
+  const element = document.getElementById('realpfp');
   const song = document.getElementById('spotifysong');
   const statusMarker = document.getElementById('statusDesc');
   const artistalbum = document.getElementById('spotifyartistalbum');
@@ -73,8 +73,8 @@ function updateUI(data) {
     //albumart.style.boxShadow = '2px 2px 20px black';
   } else {
     // Set default background if no album art
-    setGradientColors(lavaballs, ['black', 'gray', 'white']);
-    setGradientColors(body, ['rgba(16, 18, 27, 0.4)', 'rgba(16, 18, 27, 0.4)']);
+    setGradientColors(lavaballs, ['rgb(161, 75, 99), rgb(139, 184, 195), rgb(222, 202, 50)']);
+    setGradientColors(body, ['rgb(77, 46, 100), rgb(219, 186, 99), rgb(149, 183, 162)']);
     song.textContent = 'No Song Detected... ' + status.toUpperCase();
     artistalbum.textContent = 'No Artist - No Album';
     albumart.src = './img/spotify.png';
