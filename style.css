@@ -2,8 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    /*font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;*/
+    font-family: "SF Pro Text", "SF Pro Display", "SF Compact", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-synthesis: none;
 }
 
 html {
@@ -40,6 +43,20 @@ html {
     background: rgba(16, 18, 27, 0.795);
 }
 
+/* Hide the main page scrollbars visually while keeping scrolling functional. 
+   - Firefox: scrollbar-width: none
+   - IE/Edge (legacy): -ms-overflow-style: none
+   - WebKit: set scrollbar size to 0 for body/html */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
 .container {
     width: 100vw;
     height: auto;
@@ -47,7 +64,7 @@ html {
     overflow: hidden;
     position: fixed;
     z-index: -1;
-    image-rendering: crisp-edges;
+    image-rendering: optimizeSpeed;
     background-blend-mode: luminosity;
     filter: url(#goo);
     mask: --noise, radial-gradient(circle at 50% 0, transparent 55%, #000 90%) 0 0 / 50% 100%;
@@ -65,65 +82,36 @@ html {
 
 body {
     overflow-x: hidden;
-    width: 100%;
+    /* Ensure body fills at least the viewport height so background covers fully.
+       Use dynamic viewport units (dvh) where available to handle mobile browser chrome. */
     background: linear-gradient(to top right, rgb(77, 46, 100), rgb(219, 186, 99), rgb(149, 183, 162));
-    height: auto;
-    padding-bottom: 20px;
+    /* don't tile the gradient and make sure it covers the viewport cleanly */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding-bottom: 75px;
     display: flex;
     flex-direction: column;
-    background-attachment: fixed;
     margin: 0;
 }
 
 .musicdesc::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: 20px;
-  box-shadow: inset 0 0 20px -5px rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.musicdesc {
-    position: relative;
-    overflow-x: hidden;
-    isolation: isolate;
-    text-align: right;
-    color: var(--retro-white);
-    width: 28vw;
-    height: auto;
-    margin-top: 52px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    padding: 22.5px -10px 22.5px 22.5px;
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     border-radius: 20px;
-    /*background-color: rgba(16, 18, 27, 0.5);*/
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2);
-    z-index: 1;
     align-content: space-around;
 }
 
 .musicdesc::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: 28px;
-  backdrop-filter: blur(8px);
-  filter: url(#glass-distortion);
-  isolation: isolate;
-}
-
-.musicdesc h1, h12 {
-    width: fit-content;
-    padding-left: 50px;
-    text-align: left;
-    word-wrap: break-word;
-    font-size: 72px;
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 28px;
 }
 
 main h6 {
@@ -142,9 +130,108 @@ main h6 {
 
 #portfolio {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: auto;
+    /* stack project sections vertically by default to avoid horizontal overflow */
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    gap: 18px;
     height: fit-content;
+}
+
+/* Desktop 3-column layout: music | profile | mods */
+@media (min-width: 1024px) {
+    #portfolio {
+        grid-auto-flow: column;
+        display: grid;
+        /* Left and right match widths to balance visual weight */
+        grid-template-columns: minmax(260px, 28%) minmax(320px, 44%) minmax(260px, 28%);
+        /* Stretch columns so left/middle/right all match the tallest column (mods combined height) */
+        align-items: stretch;
+        gap: 32px;
+        padding: 20px 40px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .musicdesc {
+        justify-self: start;
+        margin-top: 40px;
+        /* make the music player visually match a single mod card */
+        width: 100%;
+        max-width: 520px;
+    min-height: 240px; /* increase to fit larger album art */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px;
+        box-sizing: border-box;
+        background: rgba(16,18,27,0.12);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        box-shadow: 0px 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .pfpdesc {
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding-top: 36px;
+    }
+
+    .pfp, .pfp .realpfp {
+        width: clamp(180px, 22vw, 260px);
+    }
+
+    .description {
+        /* size to content and prevent internal scrollbars */
+        width: fit-content;
+        max-width: min(520px, 80%);
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        box-sizing: border-box;
+    }
+
+    .project {
+        justify-self: end;
+        align-self: start;
+    }
+
+    /* Right column: ensure cards use full available width and match left height */
+    .weepingangels, .ait, .k9 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Let the mods container determine height (cards stack) and allow music box to stretch to match it */
+    .mods {
+        min-height: auto;
+    }
+
+    /* Make the music player stack album art above metadata and enlarge it */
+    .musicdesc .songdetails {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+    }
+
+    .musicdesc .albumart {
+        /* At large sizes let the album art get significantly larger but still bounded */
+        width: clamp(220px, 42%, 520px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-radius: 16px;
+        object-fit: cover;
+    }
+
+    .musicdesc .song-title,
+    .musicdesc .song-sub {
+        text-align: center;
+        padding: 0 8px;
+    }
 }
 
 #about {
@@ -156,55 +243,100 @@ main {
     text-align: center;
 }
 
-.pfpdesc {
-    display: grid;
-    grid-column: auto;
-}
-
-.songdetails {
-    border-color: rgba(16, 18, 27, 0.4);
-    border-radius: 20px;
-    cursor: pointer;
-    position: relative;
-    display: grid;
-    width: auto;
-    grid-template-columns: 12.5vw 1fr;
-    padding-left: 20px;
-    padding-top: 10vh;
-    text-align: left;
-    z-index: 1;
-    margin: 0;
-    top: 0;
-    left: 0;
-}
-
-.songdetails h1 {
-    font-size: 24px;
+    .musicdesc {
+        justify-self: start;
+        margin-top: 40px;
+        /* make the music player visually match a single mod card; allow vertical stretching */
+        width: 100%;
+        max-width: 520px;
+        min-height: auto;
+        height: auto;
+        position: relative; /* contain absolutely-positioned pseudo elements */
+        isolation: isolate;
+        overflow: hidden; /* prevent pseudo-elements from bleeding outside */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: stretch; /* fill the grid row height */
+        padding: 16px;
+        box-sizing: border-box;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 20px;
+        box-shadow: inset 0 0 20px -5px rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.05);
+    }
+.songdetails .song-title {
+    font-size: clamp(16px, 2.4vw, 20px);
     word-wrap: break-word;
     width: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: auto;
-    overflow-wrap: normal;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0 6px 0 0;
+    /* allow up to two lines, then truncate */
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 8px;
+}
+
+.song-sub {
+    font-size: 14px;
+    margin: 6px 0 0 0;
+    color: rgba(240,246,240,0.9);
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .albumart {
-    width: 100%;
-    z-index: 1;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+     /* make album art scale with the .musicdesc container. Use a percentage so
+         the image grows as the container grows, but clamp it to sensible bounds.
+         Keep aspect ratio square. Increased min/mid/max so default size is much larger. */
+     width: clamp(160px, 44%, 560px);
+     height: auto;
+     aspect-ratio: 1 / 1;
+     object-fit: cover;
+     z-index: 1;
+     border-radius: 12px;
+     cursor: pointer;
+     box-shadow: 0 18px 48px rgba(0,0,0,0.45);
+     transition: width 260ms ease, transform 260ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                     box-shadow 260ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+     overflow: hidden;
+     display: block;
 }
 
 .albumart:hover {
-    margin-top: 1.5px;
-    scale: 1.01;
-    box-shadow: 5px 4px 16px rgba(0,0,0,1);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 32px 84px rgba(0,0,0,0.62);
 }
 
-.albumart:hover {
-    scale: 1.1;
+/* Apply the same rounded-corner drop-shadow to project thumbnails and other small images */
+.project img,
+.project a img,
+.filtimg,
+.filtimg img,
+.mods .listmods img,
+.lqrsite img,
+.spchey img {
+    border-radius: 12px;
+    /* heavier shadow for thumbnails to match album art weight */
+    box-shadow: 0 16px 48px rgba(0,0,0,0.48);
+    transition: transform 240ms cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 240ms ease;
+    overflow: hidden;
+    display: block;
 }
 
 .pfp::before {
@@ -242,7 +374,7 @@ main {
     border-radius: 58px;
     backdrop-filter: blur(8px);
     filter: url(#glass-distortion);
-    isolation: isolate;
+    /* do not create a new stacking context here; allow sibling z-index ordering */
 }
 
 .realpfp {
@@ -358,11 +490,10 @@ section {
     word-wrap: break-word;
     font-size: 14px;
     justify-self: baseline;
-    align-self: end;
-    max-width: 10vw;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    align-self: start;
+    max-width: 100%;
+    display: block;
+    margin: 8px 0 0 10px;
 }
 
 .mods a {
@@ -402,18 +533,22 @@ section {
 
 .weepingangels, .ait, .k9 {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    /* two-column: flexible text + fixed image */
+    grid-template-columns: 1fr auto;
+    gap: 12px;
     align-items: center;
     position: relative;
-    height: 20vh;
     isolation: isolate;
-    width: 28vw;
-    overflow-x: hidden;
+    /* ensure the card is tall enough to contain the image and bottom rule */
+    min-height: 160px;
+    width: 100%;
+    max-width: 520px;
+    overflow: hidden;
     justify-content: space-between;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: left;
     margin-inline: initial;
-    padding: 20px;
+    padding: 30px;
     margin-bottom: 20px;
     color: var(--retro-white);
     border-radius: 20px;
@@ -450,14 +585,15 @@ section {
 }
 
 .line {
-    margin-top: 160px;
-    justify-self: center;
-    margin-left: 6%;
-    width: 60%;
-    height: 5px;
-    margin-bottom: 5px;
+    /* bottom-aligned decorative rule inside cards; don't push layout */
     position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 18px;
+    height: 5px;
     background-color: var(--retro-white);
+    border-radius: 2px;
+    z-index: 30; /* sit above images */
 }
 
 #portfolio h1,
@@ -479,6 +615,16 @@ section {
 
 .project img {
     max-width: 100%;
+}
+
+.mods .listmods img {
+    /* keep project/mod thumbnails from overflowing their card */
+    max-width: 130px;
+    max-height: 140px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .project a {
@@ -557,25 +703,22 @@ section {
 }
 
 .aboutme {
-        position: relative;
-        isolation: isolate;
-        border-radius: 20px;
-        /*background-color: rgba(16, 18, 27, 0.5);*/
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(8px);
-        box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        width: 45%;
-        box-sizing: border-box;
-        display: flex;
-        margin-bottom: 20px;
-        flex-basis:content;
-        text-align: center;
-        flex-wrap: wrap;
-        flex-direction: auto auto;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
+    position: relative;
+    isolation: isolate;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    padding: 22px;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px 28px;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .aboutme::after {
@@ -587,6 +730,203 @@ section {
     backdrop-filter: blur(8px);
     filter: url(#glass-distortion);
     isolation: isolate;
+}
+
+/* Card layout inside About section */
+.about-cards {
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 12px;
+    width: 100%;
+    position: relative; /* needed for stacked/deck overlap */
+    padding-top: 8px;
+}
+
+.left-cards { grid-template-columns: 1fr; }
+.right-cards { grid-template-columns: 1fr; }
+
+.pfp-card { display:flex; align-items:center; justify-content:center; }
+
+/* Glassy deck-like cards */
+.about-card {
+    --card-rot: 0deg;
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    padding: 14px 16px;
+    border-radius: 14px;
+    box-shadow: 0 8px 36px rgba(6,8,12,0.38), inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: transform 260ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 260ms ease, z-index 260ms;
+    cursor: default;
+    transform: rotate(var(--card-rot)) translateY(0);
+}
+
+.about-card:first-child { margin-top: 0; }
+/* overlap to create a stacked/deck effect */
+.about-cards .about-card { margin-top: -12px; }
+
+/* small per-card rotations to mimic a shuffled deck */
+.left-cards .about-card:nth-child(1) { --card-rot: -3deg; }
+.left-cards .about-card:nth-child(2) { --card-rot: 2deg; }
+.left-cards .about-card:nth-child(3) { --card-rot: -1.5deg; }
+.left-cards .about-card:nth-child(4) { --card-rot: 1deg; }
+.left-cards .about-card:nth-child(5) { --card-rot: -2deg; }
+
+.right-cards .about-card:nth-child(1) { --card-rot: 3deg; }
+.right-cards .about-card:nth-child(2) { --card-rot: -2deg; }
+.right-cards .about-card:nth-child(3) { --card-rot: 1.5deg; }
+
+.about-card strong { display:block; font-size: 14px; margin-bottom: 6px; color: var(--light-orange); }
+.about-card .card-body { font-size: 16px; color: var(--retro-white); }
+.about-card ul { margin: 0; padding-left: 18px; }
+
+.about-card:hover {
+    transform: rotate(0deg) translateY(-18px) scale(1.02);
+    box-shadow: 0 40px 110px rgba(6,8,12,0.65), inset 0 1px 0 rgba(255,255,255,0.06);
+    z-index: 50;
+}
+
+/* make sure profile image stays contained */
+.pfp-card .realpfp { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; box-shadow: 0 20px 60px rgba(0,0,0,0.45); }
+
+/* Responsive: remove overlap and rotations on smaller screens so content is easy to read */
+@media (max-width: 1024px) {
+    .aboutme { grid-template-columns: 1fr; justify-items: stretch; }
+    .pfp-card { order: 2; }
+    .left-cards, .right-cards { grid-template-columns: 1fr; }
+    .pfp-card .realpfp { width: 160px; height: 160px; }
+    .about-cards .about-card { margin-top: 8px; transform: rotate(0deg) translateY(0); }
+}
+
+@media (max-width: 480px) {
+    .about-card { padding: 12px; }
+    .pfp-card .realpfp { width: 120px; height: 120px; }
+}
+
+/* Card deck styles (replaces the About section) */
+#deck { justify-self:center; padding: 6px 6px; background: transparent; border: 0; }
+.card-deck {
+    display: inline-flex;
+    gap: 0; /* cards will overlap to form a fan */
+    align-items: flex-end;
+    justify-content: center;
+    /* make the deck shrink-to-fit its children so it can be centered precisely */
+    width: max-content;
+    margin: 0 auto;
+    overflow: visible; /* allow overlap to render outside container */
+    padding: 12px 40px; /* give extra room so outer cards don't clip */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    max-height: none;
+    -ms-overflow-style: none; /* hide IE scrollbar */
+    scrollbar-width: none; /* hide Firefox scrollbar */
+}
+
+/* Desktop: pin the deck to the bottom center of the viewport (above the footer) */
+@media (min-width: 900px) {
+    /* Keep the deck in the document flow (not fixed). This prevents any
+       backdrop/overlay banding and avoids overlapping page glass effects. */
+    #deck {
+        position: static;
+        transform: none;
+        bottom: auto;
+        max-width: 1200px;
+        z-index: 60; /* still above normal content but below absolutely critical UI */
+        padding: 12px 20px; /* give breathing room so cards don't clip */
+        border-radius: 12px;
+        pointer-events: auto;
+        background: transparent;
+        border: 0;
+        overflow: visible;
+        box-shadow: none;
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+/* Small screens: keep deck in document flow at bottom of page */
+@media (max-width: 900px) {
+    #deck { position: static; transform: none; bottom: auto; width: 100%; max-width: none; padding: 12px; border-radius: 12px; }
+}
+.card-deck::-webkit-scrollbar { display: none; }
+
+.deck-card {
+    justify-self: center;
+    --rot: 0deg;
+    --ty: 0px;
+    --tx: 0px;
+    position: relative; /* ensure z-index can be applied */
+    flex: 0 0 170px;
+    height: 220px;
+    margin: 0 -40px; /* overlap so cards fan */
+    padding: 120px 20px;
+    /* make cards more transparent so background shows through */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px -5px rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.05);
+    isolation: isolate;
+    /* rotate and vertically offset each card to form a fan */
+    transform: rotate(var(--rot)) translateY(var(--ty)) translateX(var(--tx));
+    transform-origin: bottom center;
+     transition: transform 260ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 220ms ease, z-index 200ms;
+     /* hint to the UA that transforms will change frequently so it can GPU-compose
+         and avoid repaint flicker when scrollIntoView moves elements */
+     will-change: transform;
+     -webkit-backface-visibility: hidden;
+     backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: auto; /* cards receive pointer events */
+}
+.deck-card .card-title { font-size: 18px; margin-bottom: 8px; color: var(--light-orange); }
+.deck-card .card-desc { font-size: 14px; color: var(--retro-white); opacity: 0.95; }
+
+/* fan rotations for up to 7 cards (edges tilt outward, center upright) */
+.card-deck .deck-card:nth-child(1) { --rot: -18deg; z-index: 1; }
+.card-deck .deck-card:nth-child(2) { --rot: -12deg; z-index: 2; }
+.card-deck .deck-card:nth-child(3) { --rot: -6deg;  z-index: 3; }
+.card-deck .deck-card:nth-child(4) { --rot: 0deg;   z-index: 6; }
+.card-deck .deck-card:nth-child(5) { --rot: 6deg;   z-index: 3; }
+.card-deck .deck-card:nth-child(6) { --rot: 12deg;  z-index: 2; }
+.card-deck .deck-card:nth-child(7) { --rot: 18deg;  z-index: 1; }
+
+/* vertical translation per card to create the hand-fan stepping */
+.card-deck .deck-card:nth-child(1) {--tx: -30px; --ty: 50px; }
+.card-deck .deck-card:nth-child(2) {--tx: -15px; --ty: 25px; }
+.card-deck .deck-card:nth-child(3) {--tx: -10px; --ty: 10px; }
+.card-deck .deck-card:nth-child(4) {--tx: 0px; --ty: 0px;  }
+.card-deck .deck-card:nth-child(5) {--tx: 10px; --ty: 10px; }
+.card-deck .deck-card:nth-child(6) {--tx: 15px; --ty: 25px; }
+.card-deck .deck-card:nth-child(7) {--tx: 30px; --ty: 50px; }
+
+/* Hover / active state: bring to front and center */
+.deck-card:hover,
+.deck-card.active {
+    z-index: 1000; /* bring hovered/active card above siblings */
+    transform: rotate(var(--rot)) translateY(-150px) scale(1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px -5px rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Reduce overlap and increase spacing on small screens */
+@media (max-width: 900px) {
+    .deck-card { flex: 0 0 180px; margin: 0 -20px; height: 180px; }
+}
+@media (max-width: 600px) {
+    .card-deck { padding: 12px; gap: 8px; }
+    .deck-card { margin: 0 8px; flex: 0 0 160px; height: 160px; transform: rotate(0deg); }
 }
 
 .aboutme p  {
@@ -670,6 +1010,23 @@ footer::after {
     margin-top: 5px;
 }
 
+/* Tweak: make footer social icons use a much subtler shadow than other thumbnails.
+   Targets only the five icons in the footer so other images keep their original style. */
+footer .social-media .filtimg,
+footer .social-media .filtimg img {
+    /* Subtle shadow for footer icons only. Keep icons inline and don't add a solid background. */
+    box-shadow: 0 6px 18px rgba(0,0,0,0);
+    border-radius: 50px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+footer .social-media .filtimg:hover,
+footer .social-media .filtimg img:hover {
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+}
+
 .filtimg {
     filter: url(#blacktoretrowhite);
 }
@@ -696,4 +1053,81 @@ svg {
 a {
     text-decoration: none;
     color: white;
+}
+
+/* Responsive adjustments for tablets and phones */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+    .musicdesc,
+    .weepingangels, .ait, .k9,
+    .songdetails, .aboutme, footer,
+    .lqrsite, .spchey {
+        width: calc(100% - 40px);
+        max-width: 760px;
+        margin: 16px auto;
+        box-sizing: border-box;
+    }
+    .musicdesc h1, .musicdesc h12 {
+        font-size: 36px;
+        padding-left: 20px;
+        text-align: left;
+        word-break: break-word;
+    }
+    .songdetails {
+        grid-template-columns: 1fr;
+        padding-top: 4vh;
+        gap: 12px;
+    }
+
+    /* Make project cards stack and allow content to flow on smaller screens */
+    .weepingangels, .ait, .k9 {
+        grid-template-columns: 1fr !important;
+        height: auto !important;
+        align-items: start;
+        padding: 12px;
+        width: calc(100% - 40px);
+    }
+
+    /* Let mod paragraphs use full width on small screens */
+    .mods p {
+        max-width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    .songdetails h1 { font-size: 20px; padding-left: 10px; }
+    .pfp, .description {
+        width: calc(100% - 32px);
+        height: auto;
+        padding: 16px;
+    }
+    .realpfp, .self {
+        width: 140px;
+    }
+    #portfolio {
+        display: block;
+    }
+    .particle { width: 35vw; height: 8vh; }
+    footer {
+        left: 50%;
+        transform: translateX(-50%) translateY(0);
+        bottom: 8px;
+        height: auto;
+        padding: 12px;
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .musicdesc h1, .musicdesc h12 { font-size: 28px; }
+    .description { font-size: 18px; padding: 12px; }
+    .mods p { max-width: 60%; font-size: 12px; }
+    .weepingangels, .lqrsite, .spchey { padding: 12px; width: calc(100% - 32px); }
+    .project h2 { font-size: 20px; }
+    main h6 { position: static; width: 100%; font-size: 18px; margin: 12px 0; }
+    #css { display: none; }
+    svg { display: none; }
+    .container { background-size: cover; }
 }

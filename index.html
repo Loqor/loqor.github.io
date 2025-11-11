@@ -28,7 +28,7 @@
     <svg>
         <defs>
             <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" edgeMode="wrap"/>
+                <feGaussianBlur in="SourceGraphic" stdDeviation="20" edgeMode="wrap"/>
                 <feColorMatrix in="name" mode="matrix" values="1 0 0 0 0
                         0 1 0 0 0
                         0 0 1 0 0
@@ -64,14 +64,14 @@
         <section id="portfolio">
             <h6>Loqor's Portfolio</h6>
         <div class="musicdesc">
-            <h1>Welcome to<br>
-                <h12>loqor.dev</h12></h1>
+            <!-- Removed the large "Welcome to loqor.dev" heading per design request -->
             <script src="discordsync.js"></script>
             <div class="songdetails">
-                <img src="./img/spotify.png" class="albumart" id="albumart">
-                <h1><a id ="spotifysong" style="font-weight: 600;"></a>
-                    <a id ="spotifyartistalbum" style="font-weight: 100; font-size: 18px;"></a>
-                </h1>
+                <img src="./img/spotify.png" class="albumart" id="albumart" alt="Album art">
+                <div class="song-meta">
+                    <h2 class="song-title"><a id="spotifysong" style="font-weight: 600;"></a></h2>
+                    <p class="song-sub"><a id="spotifyartistalbum" style="font-weight: 100; font-size: 18px;"></a></p>
+                </div>
             </div>
         </div>
             <div class="pfpdesc">
@@ -89,61 +89,105 @@
                         <h4>Adventures In Time (AIT)</h4>
                         <p><br>Adds the TARDIS from Doctor Who into Fabric 1.20.1. Apparatus Vivi.</p>
                         <a href="https://modrinth.com/mod/ait"><img src="https://cdn.modrinth.com/data/ZMP9ZjB9/20bbedbb8d06d656b8b123a821fdd5ab5f3c999a.png" class="listmods" width="130" height="130" alt="Modrinth for AIT"></a>
-                        <span class="line"></span>
                     </div>
                     <div class="weepingangels">
                         <h4>Loqor's Weeping Angels</h4>
                         <p><br>A simple Weeping Angels mod for Fabric 1.20.1 based on the creatures from Doctor Who. Don't. Blink.</p>
                         <a href="https://modrinth.com/mod/loqors-weeping-angels"><img src="https://cdn.modrinth.com/data/ufXjDQbl/images/94b915e59839dbbc4eaf8a639090f71d0ad302ef.png" class="listmods" width="130" height="130" alt="Modrinth for Loqor's Weeping Angels"></a>
-                        <span class="line"></span>
                     </div>
                     <div class="k9">
                         <h4>K9 Mod</h4>
                         <p><br>A small metallic canine companion mod from Doctor Who for your Minecraft world! Recently updated to Fabric for 1.20.2!</p>
                         <a href="https://modrinth.com/mod/k9-mod"><img src="https://cdn.modrinth.com/data/KZvTlFBC/c8fff101d3ce8b1e3b39d0dc8fd2509c06021fe1.png" class="listmods" width="130" height="130" alt="Modrinth for K9"></a>
-                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+        <!-- deck moved below portfolio to avoid nesting/overlay issues -->
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about">
-            <h1>About Me</h1>
-            <div class="gridding">
-            <div class="iconcontainer">
-                <img src="./img/language_icons/java.png" width="100" class="languageicons filtimg" id="java">
-                <img src="./img/language_icons/html5.png" width="100" class="languageicons filtimg" id="html5">
-                <img src="./img/language_icons/css.png" width="100" class="languageicons filtimg" id="cs">
-                <img src="./img/language_icons/lua.png" width="100" class="languageicons filtimg" id="lua">
+        <section id="deck">
+            <h1></h1>
+            <div class="card-deck" role="list">
+                <article class="deck-card" data-title="Name">
+                    <h3 class="card-title">Name</h3>
+                    <div class="card-desc">Isaiah Crace</div>
+                </article>
+
+                <article class="deck-card" data-title="Age">
+                    <h3 class="card-title">Age</h3>
+                    <div class="card-desc">20</div>
+                </article>
+
+                <article class="deck-card" data-title="Nationality">
+                    <h3 class="card-title">Nationality</h3>
+                    <div class="card-desc">American</div>
+                </article>
+
+                <article class="deck-card" data-title="Occupation">
+                    <h3 class="card-title">Occupation</h3>
+                    <div class="card-desc">Freelance Programmer, Barista, Husband</div>
+                </article>
+
+                <article class="deck-card" data-title="Hobbies">
+                    <h3 class="card-title">Hobbies</h3>
+                    <div class="card-desc">Programming, Film Photography</div>
+                </article>
+
+                <article class="deck-card" data-title="Language Skills">
+                    <h3 class="card-title">Language Skills</h3>
+                    <div class="card-desc">Java • JavaScript • C • Rust</div>
+                </article>
+                <article class="deck-card" data-title="Life Skills">
+                    <h3 class="card-title">Life Skills</h3>
+                    <div class="card-desc">Project Management, Communication, Adaptability</div>
+                </article>
             </div>
-            <div class="aboutme">
-                <p>Name: Isaiah Crace
-                    <br>Age: 20
-                    <br>Nationality: American
-                    <br>Occupation: Professional Programmer, 
-                    <br>Marital Status: Husband
-                    <br>Hobbies:
-                    <br>&bull; Programming
-                    <br>&bull; Film Photography
-                    <br>&bull; Electronics
-                    <br>&bull; Music
-                </p>
-                <img src="./img/self.png" class="realpfp">
-                <p>Professional Programmer
-                    <br>Proficient in:
-                    <br>&bull; Java
-                    <br>&bull; JavaScript
-                    <br>&bull; Lua
-                    <br>&bull; HTML/CSS
-                </p>
-            </div>
-            <div class="iconcontainer">
-                <img src="./img/language_icons/js.png" width="100" class="languageicons filtimg" id="js">
-                <img src="./img/language_icons/csharp.png" width="100" class="languageicons filtimg" id="csharp">
-                <img src="./img/language_icons/c.png" width="100" class="languageicons filtimg" id="c">
-                <img src="./img/language_icons/c++.png" width="100" class="languageicons filtimg" id="c++">
-            </div>
-        </div>
+
+            <!-- small script to scroll hovered card to center and raise z-index -->
+            <script>
+                    (function(){
+                        const deck = document.querySelector('.card-deck');
+                        if (!deck) return;
+                        const cards = Array.from(deck.querySelectorAll('.deck-card'));
+                        cards.forEach(card => {
+                            // store a small timeout id on the element to debounce mouseleave
+                            card._leaveTimeout = null;
+
+                            card.addEventListener('mouseenter', (e) => {
+                                // cancel any pending remove
+                                if (card._leaveTimeout) {
+                                    clearTimeout(card._leaveTimeout);
+                                    card._leaveTimeout = null;
+                                }
+                                // bring to front via class
+                                cards.forEach(c=>c.classList.remove('active'));
+                                card.classList.add('active');
+                                // scroll into view horizontally (center)
+                                // use smooth behavior but allow the hover state to persist briefly
+                                card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                            });
+
+                            card.addEventListener('mouseleave', () => {
+                                // delay removing the active state slightly to avoid flicker
+                                // when scrollIntoView briefly causes mouseleave/reenter
+                                card._leaveTimeout = setTimeout(() => {
+                                    card.classList.remove('active');
+                                    card._leaveTimeout = null;
+                                }, 350);
+                            });
+                        });
+                    })();
+            </script>
+        </section>
+        <!-- helper/alias section for styling or anchor links -->
+        <section id="cards" class="cards-section">
+            <!-- placeholder section#cards (empty by default) -->
         </section>
     </main>
 
