@@ -3,204 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loqor's Portfolio</title>
+    <title>LOQOR — Developer & Digital Artist</title>
     <meta content="Loqor's Portfolio" property="og:title"/>
     <meta content="Hi! I'm Loqor, a professional Minecraft modder, web developer, and digital artist. I am most well known for the Minecraft mod Adventures In Time, themed around the TARDIS from Doctor Who." property="og:description"/>
     <meta content="https://loqor.dev" property="og:url"/>
     <meta content="https://loqor.dev/img/loqor-pfp-comm.png" property="og:image"/>
-    <meta content="#5D48D9" data-react-helmet="true" name="theme-color"/>
+    <meta content="#0a0a0a" data-react-helmet="true" name="theme-color"/>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 </head>
 <body>
+    <div class="noise-overlay"></div>
+
     <div><script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
         <script>
           kofiWidgetOverlay.draw('loqor', {
             'type': 'floating-chat',
             'floating-chat.donateButton.text': 'Support me',
-            'floating-chat.donateButton.backdrop-filter': 'blur(8px)',
-            'floating-chat.donateButton.background-color': 'rgba(255, 255, 255, 0.2)',
+            'floating-chat.donateButton.background-color': '#1a1a1a',
             'floating-chat.donateButton.text-color': '#fff',
           });
-        </script></div>
-    <div class="container" id="container"></div>
-    <script src="lavaballs.js"></script>
-    <svg>
-        <defs>
-            <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="20" edgeMode="wrap"/>
-                <feColorMatrix in="name" mode="matrix" values="1 0 0 0 0
-                        0 1 0 0 0
-                        0 0 1 0 0
-                        0 0 0 20 -15"/>
-            </filter>
-            <filter id="blacktoretrowhite">
-                <feColorMatrix in="name" mode="matrix" values="
-                        0 0 0 0 0.9411764706
-                        0 0 0 0 0.9647058824
-                        0 0 0 0 0.9411764706
-                        1 1 1 1 0"/>
-            </filter>
-        </defs>
-    </svg>
+        </script>
+    </div>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0"  width="0" height="0" style="position: relative;">
-	<defs>
-		<filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
-			<feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="92" result="noise"></feTurbulence>
-			<feGaussianBlur in="noise" stdDeviation="10 10" edgeMode="wrap" result="blurred"></feGaussianBlur>
-			<feDisplacementMap in2="blurred" scale="50" xChannelSelector="R" yChannelSelector="G" result="urmom"></feDisplacementMap>
-			<feBlend in="urmom" in2="SourceGraphic" mode="normal" result="blend"></feBlend>
-			<feGaussianBlur in="blend" stdDeviation="4 4" edgeMode="wrap" result="gaussit"></feGaussianBlur>
-			<feColorMatrix in="gaussit" type="matrix" values="0.5 0   0   0   0  
-			                                                  0.5 0   0   0   0  
-			                                                  0.5 0   0   0   0  
-			                                                  0   0   0   0   0"></feColorMatrix>
-		</filter>
-	</defs>
-</svg>
+    <!-- Minimal Header -->
+    <header class="site-header">
+        <nav class="nav">
+            <a href="#" class="nav-brand">Loqor</a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#connect">Connect</a>
+            </div>
+        </nav>
+    </header>
 
     <main>
-        <section id="portfolio">
-            <h6>Loqor's Portfolio</h6>
-        <div class="musicdesc">
-            <!-- Removed the large "Welcome to loqor.dev" heading per design request -->
-            <script src="discordsync.js"></script>
-            <div class="songdetails">
-                <img src="./img/spotify.png" class="albumart" id="albumart" alt="Album art">
-                <div class="song-meta">
-                    <h2 class="song-title"><a id="spotifysong" style="font-weight: 600;"></a></h2>
-                    <p class="song-sub"><a id="spotifyartistalbum" style="font-weight: 100; font-size: 18px;"></a></p>
-                </div>
-            </div>
-        </div>
-            <div class="pfpdesc">
-                <div class="pfp pfpbg" id="pfp">
-                    <img src="./img/loqor-pfp-comm.png" class="realpfp" id="realpfp">
-                </div>
-                <div class="description">
-                    <p id = "statusDesc">idk what to put here so...</p>
-                </div>
-            </div>
-            <div class="project">
-                <h2>Minecraft Mods</h2>
-                <div class="mods">
-                    <div class="ait">
-                        <h4>Adventures In Time (AIT)</h4>
-                        <p><br>Adds the TARDIS from Doctor Who into Fabric 1.20.1. Apparatus Vivi.</p>
-                        <a href="https://modrinth.com/mod/ait"><img src="https://cdn.modrinth.com/data/ZMP9ZjB9/20bbedbb8d06d656b8b123a821fdd5ab5f3c999a.png" class="listmods" width="130" height="130" alt="Modrinth for AIT"></a>
+        <!-- Hero: Brand Focus -->
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-eyebrow" data-animate="fade-up">Developer & Digital Artist</div>
+                    <h1 class="hero-name" data-animate="fade-up" data-delay="1">
+                        <span class="name-solid">LOQ</span><span class="name-highlight">OR</span>
+                    </h1>
+                    <p class="hero-bio" data-animate="fade-up" data-delay="2">
+                        Crafting immersive Minecraft experiences and experimental interfaces.
+                        Currently building worlds through code.
+                    </p>
+                    <div class="hero-tags" data-animate="fade-up" data-delay="3">
+                        <span class="tag">Java</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Zig</span>
+                        <span class="tag">C</span>
+                        <span class="tag">Lua</span>
+                        <span class="tag">3D Art</span>
                     </div>
-                    <div class="weepingangels">
-                        <h4>Loqor's Weeping Angels</h4>
-                        <p><br>A simple Weeping Angels mod for Fabric 1.20.1 based on the creatures from Doctor Who. Don't. Blink.</p>
-                        <a href="https://modrinth.com/mod/loqors-weeping-angels"><img src="https://cdn.modrinth.com/data/ufXjDQbl/images/94b915e59839dbbc4eaf8a639090f71d0ad302ef.png" class="listmods" width="130" height="130" alt="Modrinth for Loqor's Weeping Angels"></a>
-                    </div>
-                    <div class="k9">
-                        <h4>K9 Mod</h4>
-                        <p><br>A small metallic canine companion mod from Doctor Who for your Minecraft world! Recently updated to Fabric for 1.20.2!</p>
-                        <a href="https://modrinth.com/mod/k9-mod"><img src="https://cdn.modrinth.com/data/KZvTlFBC/c8fff101d3ce8b1e3b39d0dc8fd2509c06021fe1.png" class="listmods" width="130" height="130" alt="Modrinth for K9"></a>
-                    </div>
-                </div>
-            </div>
-        <!-- deck moved below portfolio to avoid nesting/overlay issues -->
-                                </ul>
-                            </div>
+                    <div class="stats-row" data-animate="fade-up" data-delay="4">
+                        <div class="stat">
+                            <span class="stat-value" id="total-downloads">—</span>
+                            <span class="stat-label">Total Downloads</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="project-count">—</span>
+                            <span class="stat-label">Projects</span>
                         </div>
                     </div>
                 </div>
+                <div class="hero-right" data-animate="fade-up" data-delay="2">
+                    <div class="profile-frame">
+                        <img src="./img/loqor-pfp-comm.png" class="profile-img" id="realpfp" alt="Loqor">
+                        <div class="profile-ring"></div>
+                    </div>
+                    <div class="status-badge" id="status-badge">
+                        <span class="status-dot"></span>
+                        <span class="status-text" id="statusDesc">Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spotify: Integrated into hero -->
+            <div class="now-playing" data-animate="fade-up" data-delay="5">
+                <div class="np-label">Currently vibing to</div>
+                <div class="np-content">
+                    <img src="./img/spotify.png" class="np-album" id="albumart" alt="Album art">
+                    <div class="np-info">
+                        <span class="np-song" id="spotifysong">Nothing playing</span>
+                        <span class="np-artist" id="spotifyartistalbum">—</span>
+                    </div>
+                    <div class="np-accent" id="accent-indicator"></div>
+                </div>
             </div>
         </section>
 
-        <section id="deck">
-            <h1></h1>
-            <div class="card-deck" role="list">
-                <article class="deck-card" data-title="Name">
-                    <h3 class="card-title">Name</h3>
-                    <div class="card-desc">Isaiah Crace</div>
-                </article>
-
-                <article class="deck-card" data-title="Age">
-                    <h3 class="card-title">Age</h3>
-                    <div class="card-desc">20</div>
-                </article>
-
-                <article class="deck-card" data-title="Nationality">
-                    <h3 class="card-title">Nationality</h3>
-                    <div class="card-desc">American</div>
-                </article>
-
-                <article class="deck-card" data-title="Occupation">
-                    <h3 class="card-title">Occupation</h3>
-                    <div class="card-desc">Freelance Programmer, Barista, Husband</div>
-                </article>
-
-                <article class="deck-card" data-title="Hobbies">
-                    <h3 class="card-title">Hobbies</h3>
-                    <div class="card-desc">Programming, Film Photography</div>
-                </article>
-
-                <article class="deck-card" data-title="Language Skills">
-                    <h3 class="card-title">Language Skills</h3>
-                    <div class="card-desc">Java • JavaScript • C • Rust</div>
-                </article>
-                <article class="deck-card" data-title="Life Skills">
-                    <h3 class="card-title">Life Skills</h3>
-                    <div class="card-desc">Project Management, Communication, Adaptability</div>
-                </article>
+        <!-- Work Section -->
+        <section id="work" class="work-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Projects</h2>
             </div>
 
-            <!-- small script to scroll hovered card to center and raise z-index -->
-            <script>
-                    (function(){
-                        const deck = document.querySelector('.card-deck');
-                        if (!deck) return;
-                        const cards = Array.from(deck.querySelectorAll('.deck-card'));
-                        cards.forEach(card => {
-                            // store a small timeout id on the element to debounce mouseleave
-                            card._leaveTimeout = null;
-
-                            card.addEventListener('mouseenter', (e) => {
-                                // cancel any pending remove
-                                if (card._leaveTimeout) {
-                                    clearTimeout(card._leaveTimeout);
-                                    card._leaveTimeout = null;
-                                }
-                                // bring to front via class
-                                cards.forEach(c=>c.classList.remove('active'));
-                                card.classList.add('active');
-                                // scroll into view horizontally (center)
-                                // use smooth behavior but allow the hover state to persist briefly
-                                card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                            });
-
-                            card.addEventListener('mouseleave', () => {
-                                // delay removing the active state slightly to avoid flicker
-                                // when scrollIntoView briefly causes mouseleave/reenter
-                                card._leaveTimeout = setTimeout(() => {
-                                    card.classList.remove('active');
-                                    card._leaveTimeout = null;
-                                }, 350);
-                            });
-                        });
-                    })();
-            </script>
+            <!-- Dynamic Mods Grid - Populated by JavaScript -->
+            <div id="mods-grid" class="mods-grid">
+                <!-- Loading skeletons -->
+                <div class="mod-card skeleton"></div>
+                <div class="mod-card skeleton"></div>
+                <div class="mod-card skeleton"></div>
+            </div>
         </section>
-        <!-- helper/alias section for styling or anchor links -->
-        <section id="cards" class="cards-section">
-            <!-- placeholder section#cards (empty by default) -->
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Recent Updates</h2>
+            </div>
+            <div id="timeline-list" class="timeline-list">
+                <!-- Loading skeletons -->
+                <div class="timeline-item skeleton"></div>
+                <div class="timeline-item skeleton"></div>
+                <div class="timeline-item skeleton"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">About</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <span class="about-label">Name</span>
+                    <span class="about-value">Isaiah Crace</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Age</span>
+                    <span class="about-value">21</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Location</span>
+                    <span class="about-value">United States</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Focus</span>
+                    <span class="about-value">Minecraft Modding, Web Dev, 3D Art</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Currently</span>
+                    <span class="about-value">Building Adventures In Time</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Commissions</span>
+                    <span class="about-value">Open for Work</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Interests</span>
+                    <span class="about-value">Music, Doctor Who</span>
+                </div>
+                <div class="about-card">
+                    <span class="about-label">Tools</span>
+                    <span class="about-value">IntelliJ, Zed, Blockbench, Nix</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section id="connect" class="connect-section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Connect</h2>
+            </div>
+
+            <div class="connect-grid">
+                <a href="https://discord.gg/D5Et6Ux7BS" target="_blank" class="connect-link">
+                    <img src="./img/discord_aesthetic.png" alt="Discord">
+                    <span class="connect-name">Discord</span>
+                    <span class="connect-arrow">↗</span>
+                </a>
+                <a href="https://github.com/loqor" target="_blank" class="connect-link">
+                    <img src="./img/github_aesthetic.png" alt="GitHub">
+                    <span class="connect-name">GitHub</span>
+                    <span class="connect-arrow">↗</span>
+                </a>
+                <a href="https://modrinth.com/user/Loqor" target="_blank" class="connect-link">
+                    <img src="./img/modrinth.png" alt="Modrinth">
+                    <span class="connect-name">Modrinth</span>
+                    <span class="connect-arrow">↗</span>
+                </a>
+                <a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank" class="connect-link">
+                    <img src="./img/youtube_aesthetic.png" alt="YouTube">
+                    <span class="connect-name">YouTube</span>
+                    <span class="connect-arrow">↗</span>
+                </a>
+                <a href="https://sketchfab.com/loqor" target="_blank" class="connect-link">
+                    <img src="./img/sketchfab_aesthetic.png" alt="Sketchfab">
+                    <span class="connect-name">Sketchfab</span>
+                    <span class="connect-arrow">↗</span>
+                </a>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <ul class="social-media">
-            <p>&copy; 2025 Loqor's Portfolio</p>
-            <li><a href="https://discord.gg/D5Et6Ux7BS" target="_blank"><img src="./img/discord_aesthetic.png" width="64" id="discord" class="filtimg"></a></li>
-            <li><a href="https://www.youtube.com/channel/UCMCcRBw_pFgfc2Ixd98iNaA" target="_blank"><img src="./img/youtube_aesthetic.png" width="64" id="youtube" class="filtimg"></a></li>
-            <li><a href="https://github.com/loqor" target="_blank"><img src="./img/github_aesthetic.png" width="64" id = "github" class="filtimg"></a></li>
-            <li><a href="https://sketchfab.com/loqor" target="_blank"><img src="./img/sketchfab_aesthetic.png" width="64" id="sketchfab" class="filtimg"></a></li>
-            <li><a href="https://modrinth.com/user/Loqor" target="_blank"><img src="./img/modrinth.png" width="64" id="modrinth" class="filtimg"></a></li>
-        </ul>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span class="footer-brand">LOQOR.DEV</span>
+            <span class="footer-copy">© 2026</span>
+        </div>
     </footer>
-    <script src="dml.js"></script>
+
+    <script src="discordsync.js"></script>
+    <script src="modrinth.js"></script>
 </body>
 </html>
