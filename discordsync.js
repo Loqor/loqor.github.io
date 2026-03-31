@@ -25,63 +25,69 @@ function updateUI(data) {
     online: '#43b581',
     dnd: '#f04747',
     idle: '#faa61a',
-    offline: 'rgba(16, 18, 27, 0.4)',
+    offline: '#4a4a4a',
   };
 
   const status = data.discord_status;
   const spotify = data.spotify;
-  const element = document.getElementById('realpfp');
+  const profileImage = document.getElementById('realpfp');
   const song = document.getElementById('spotifysong');
   const statusMarker = document.getElementById('statusDesc');
   const artistalbum = document.getElementById('spotifyartistalbum');
   const albumart = document.getElementById('albumart');
-  const body = document.body;
-  const lavaballs = document.getElementsByClassName('particle');
+  const accentIndicator = document.getElementById('accent-indicator');
+  const statusDot = document.querySelector('.status-dot');
+  const root = document.documentElement;
 
-  element.style.border = `5px solid ${statusColors[status] || statusColors.offline}`;
+  // Update profile border with status color
+  if (profileImage) {
+    profileImage.style.borderColor = statusColors[status] || statusColors.offline;
+  }
 
-  const textOfActivity = '\"' + data.activities[0].state + '\" - Loqor' || 'From dust we came, to dust we shall return.';
-  statusMarker.style.fontStyle = 'italic';
-  statusMarker.textContent = textOfActivity;
+  // Update status dot color
+  if (statusDot) {
+    statusDot.style.background = statusColors[status] || statusColors.offline;
+  }
 
-  if (data.listening_to_spotify) {
-    song.textContent = spotify.song || 'No Song Detected... ' + status.toUpperCase();
+  // Update status text
+  if (statusMarker) {
+    const statusText = status ? status.charAt(0).toUpperCase() + status.slice(1) : 'Offline';
+    statusMarker.textContent = statusText;
+  }
 
-    artistalbum.textContent = spotify.artist ? `${spotify.artist} - ${spotify.album}` : 'No Artist - No Album';
+  if (data.listening_to_spotify && spotify) {
+    song.textContent = spotify.song || 'Nothing playing';
+    artistalbum.textContent = spotify.artist ? `${spotify.artist} — ${spotify.album}` : '—';
     albumart.src = spotify.album_art_url;
 
-    // Get the most and less abundant colors from the album art
+    // Get dominant colors from album art and set CSS custom properties
     getDominantColors(albumart.src, (mostAbundantColors, lessAbundantColors) => {
-      const mostAbundantColor1 = `rgb(${mostAbundantColors[0][0]}, ${mostAbundantColors[0][1]}, ${mostAbundantColors[0][2]})`;
-      const mostAbundantColor2 = `rgb(${mostAbundantColors[1][0]}, ${mostAbundantColors[1][1]}, ${mostAbundantColors[1][2]})`;
-      const mostAbundantColor3 = `rgb(${mostAbundantColors[2][0]}, ${mostAbundantColors[2][1]}, ${mostAbundantColors[2][2]})`;
+      const accentPrimary = `rgb(${mostAbundantColors[0][0]}, ${mostAbundantColors[0][1]}, ${mostAbundantColors[0][2]})`;
+      const accentSecondary = `rgb(${mostAbundantColors[1][0]}, ${mostAbundantColors[1][1]}, ${mostAbundantColors[1][2]})`;
 
-      const lessAbundantColor1 = `rgb(${lessAbundantColors[0][0]}, ${lessAbundantColors[0][1]}, ${lessAbundantColors[0][2]})`;
-      const lessAbundantColor2 = `rgb(${lessAbundantColors[1][0]}, ${lessAbundantColors[1][1]}, ${lessAbundantColors[1][2]})`;
-      const lessAbundantColor3 = `rgb(${lessAbundantColors[2][0]}, ${lessAbundantColors[2][1]}, ${lessAbundantColors[2][2]})`;
+      // Set CSS custom properties for accent colors
+      root.style.setProperty('--accent-primary', accentPrimary);
+      root.style.setProperty('--accent-secondary', accentSecondary);
 
-      // Set background colors based on the extracted colors
-      setGradientColors(body, [mostAbundantColor1, mostAbundantColor2, mostAbundantColor3]);
-      body.style.backgroundRepeat = "no-repeat";
-
-      // Set lavaball colors based on less abundant colors
-      for (let i = 0; i < lavaballs.length; i++) {
-        setGradientColors(lavaballs[i], [lessAbundantColor3, lessAbundantColor2, lessAbundantColor1]);
+      // Update the accent indicator
+      if (accentIndicator) {
+        accentIndicator.style.backgroundColor = accentPrimary;
       }
     });
-
-    //albumart.style.boxShadow = '2px 2px 20px black';
   } else {
-    // Set default background if no album art
-    setGradientColors(lavaballs, ['rgb(161, 75, 99), rgb(139, 184, 195), rgb(222, 202, 50)']);
-    setGradientColors(body, ['rgb(77, 46, 100), rgb(219, 186, 99), rgb(149, 183, 162)']);
-    song.textContent = 'No Song Detected... ' + status.toUpperCase();
-    artistalbum.textContent = 'No Artist - No Album';
+    // Reset to default white accent when not playing
+    root.style.setProperty('--accent-primary', '#ffffff');
+    root.style.setProperty('--accent-secondary', '#888888');
+
+    if (accentIndicator) {
+      accentIndicator.style.backgroundColor = '#ffffff';
+    }
+
+    song.textContent = 'Nothing playing';
+    artistalbum.textContent = '—';
     albumart.src = './img/spotify.png';
-    //albumart.style.boxShadow = 'none';
   }
 }
-
 
 function startInterval() {
   intervalId = setInterval(fetchDiscordData, 10 * 1000);
@@ -94,54 +100,6 @@ function clearCustomInterval() {
   }
 }
 
-function setGradientColors(element, colors) {
-  element.style.background = `linear-gradient(to top right, ${colors.join(', ')})`;
-}
-
-async function getAverageColor(img, factor) {
-  try {
-    const { width, height } = img;
-    const resizeWidth = Math.floor(width * factor);
-    const resizeHeight = Math.floor(height * factor);
-
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.width = resizeWidth;
-    canvas.height = resizeHeight;
-    context.drawImage(img, 0, 0, resizeWidth, resizeHeight);
-
-    const imageData = context.getImageData(0, 0, resizeWidth, resizeHeight).data;
-    let sumR = 0, sumG = 0, sumB = 0;
-
-    for (let i = 0; i < imageData.length; i += 4) {
-      sumR += imageData[i];
-      sumG += imageData[i + 1];
-      sumB += imageData[i + 2];
-    }
-
-    const averageR = Math.round(sumR / (imageData.length / 4));
-    const averageG = Math.round(sumG / (imageData.length / 4));
-    const averageB = Math.round(sumB / (imageData.length / 4));
-
-    return `rgb(${averageR}, ${averageG}, ${averageB})`;
-  } catch (error) {
-    console.error('Error getting average color:', error);
-  }
-}
-
-function getLighterColor(color, factor) {
-  const [r, g, b] = color
-    .replace(/[^\d,]/g, '')
-    .split(',')
-    .map(val => parseInt(val));
-
-  const adjustedR = Math.round(r + (255 - r) * factor);
-  const adjustedG = Math.round(g + (255 - g) * factor);
-  const adjustedB = Math.round(b + (255 - b) * factor);
-
-  return `rgb(${adjustedR}, ${adjustedG}, ${adjustedB})`;
-}
-
 async function getDominantColors(imageSrc, callback) {
   try {
     const img = new Image();
@@ -150,8 +108,8 @@ async function getDominantColors(imageSrc, callback) {
 
     img.onload = function () {
       const colorThief = new ColorThief();
-      const mostAbundantColors = colorThief.getPalette(img, 5); // Increase the number of colors for most abundant set
-      const lessAbundantColors = colorThief.getPalette(img, 15); // Increase the number of colors for less abundant set
+      const mostAbundantColors = colorThief.getPalette(img, 5);
+      const lessAbundantColors = colorThief.getPalette(img, 15);
 
       callback(mostAbundantColors, lessAbundantColors);
     };
@@ -161,16 +119,25 @@ async function getDominantColors(imageSrc, callback) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const buttonelement = document.getElementById('albumart');
-  const song = document.getElementById('spotifysong');
-  buttonelement.addEventListener('click', () => {
-    if (previousData && previousData.spotify && previousData.spotify.track_id) {
-      window.location.href = 'https://open.spotify.com/track/' + previousData.spotify.track_id;
-    }
-  });
-  song.addEventListener('click', () => {
-    fetchDiscordData();
-  });
+  // Clear any lingering inline background styles to let CSS take over
+  document.body.style.background = '';
+
+  const albumArtElement = document.getElementById('albumart');
+  const songElement = document.getElementById('spotifysong');
+
+  if (albumArtElement) {
+    albumArtElement.addEventListener('click', () => {
+      if (previousData && previousData.spotify && previousData.spotify.track_id) {
+        window.open('https://open.spotify.com/track/' + previousData.spotify.track_id, '_blank');
+      }
+    });
+  }
+
+  if (songElement) {
+    songElement.addEventListener('click', () => {
+      fetchDiscordData();
+    });
+  }
 
   window.addEventListener('beforeunload', () => {
     clearCustomInterval();
